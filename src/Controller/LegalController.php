@@ -9,10 +9,16 @@ use Symfony\Component\Routing\Attribute\Route;
 class LegalController extends AbstractController
 {
     #[Route('/CGV', name: 'app_cgv')]
-    public function index(): Response
+    public function cgv(): Response
     {
         return $this->render('legal/CGV.html.twig', [
-            'controller_name' => 'LegalController',
         ]);
     }
+    #[Route('/legal_notice', name: 'app_legal_notice')]
+    public function legalNotice(): Response
+    {
+        return $this->render('legal/legalNotice.html.twig', [
+        ]);
+    }
+
 }
