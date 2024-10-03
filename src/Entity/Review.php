@@ -34,7 +34,7 @@ class Review
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?travel $travel = null;
+    private ?Travel $travel = null;
 
     #[ORM\OneToOne(mappedBy: 'review', cascade: ['persist', 'remove'])]
     private ?Reservation $reservation = null;
