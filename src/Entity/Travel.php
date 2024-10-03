@@ -57,7 +57,7 @@ class Travel
 
     #[ORM\ManyToOne(inversedBy: 'travels')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?destination $destination = null;
+    private ?Destination $destination = null;
 
     /**
      * @var Collection<int, Review>
@@ -241,12 +241,12 @@ class Travel
         return $this;
     }
 
-    public function getDestination(): ?destination
+    public function getDestination(): ?Destination
     {
         return $this->destination;
     }
 
-    public function setDestination(?destination $destination): static
+    public function setDestination(?Destination $destination): static
     {
         $this->destination = $destination;
 
