@@ -54,7 +54,7 @@ class Address
     #[ORM\OneToMany(targetEntity: reservation::class, mappedBy: 'address')]
     private Collection $reservations;
 
-    #[ORM\ManyToOne(inversedBy: 'addresses')]
+    #[ORM\ManyToOne(inversedBy: 'address')]
     private ?User $client = null;
 
     public function __construct()

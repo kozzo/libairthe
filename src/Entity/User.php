@@ -6,15 +6,33 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(length: 180)]
+    private ?string $email = null;
+
+    /**
+     * @var list<string> The user roles
+     */
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
@@ -34,17 +52,11 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $password = null;
+    #[ORM\Column]
+    private ?bool $is_admin = null;
 
     #[ORM\Column]
-    private ?bool $isAdmin = null;
-
-    #[ORM\Column]
-    private ?bool $isValidated = null;
+    private ?bool $is_validated = null;
 
     #[ORM\Column]
     private ?int $experiencePoints = null;
@@ -52,31 +64,101 @@ class User
     /**
      * @var Collection<int, review>
      */
-    #[ORM\OneToMany(targetEntity: review::class, mappedBy: 'author')]
+    #[ORM\OneToMany(targetEntity: review::class, mappedBy: 'client')]
     private Collection $reviews;
 
     /**
      * @var Collection<int, address>
      */
-    #[ORM\OneToMany(targetEntity: address::class, mappedBy: 'resident')]
-    private Collection $addresses;
+    #[ORM\OneToMany(targetEntity: address::class, mappedBy: 'client')]
+    private Collection $address;
 
     /**
      * @var Collection<int, reservation>
      */
     #[ORM\OneToMany(targetEntity: reservation::class, mappedBy: 'client')]
-    private Collection $reservations;
+    private Collection $reservation;
 
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
-        $this->addresses = new ArrayCollection();
-        $this->reservations = new ArrayCollection();
+        $this->address = new ArrayCollection();
+        $this->reservation = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     *
+     * @return list<string>
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    /**
+     * @param list<string> $roles
+     */
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getSlug(): ?string
@@ -151,50 +233,26 @@ class User
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
     public function isAdmin(): ?bool
     {
-        return $this->isAdmin;
+        return $this->is_admin;
     }
 
-    public function setAdmin(bool $isAdmin): static
+    public function setAdmin(bool $is_admin): static
     {
-        $this->isAdmin = $isAdmin;
+        $this->is_admin = $is_admin;
 
         return $this;
     }
 
     public function isValidated(): ?bool
     {
-        return $this->isValidated;
+        return $this->is_validated;
     }
 
-    public function setValidated(bool $isValidated): static
+    public function setValidated(bool $is_validated): static
     {
-        $this->isValidated = $isValidated;
+        $this->is_validated = $is_validated;
 
         return $this;
     }
@@ -223,7 +281,7 @@ class User
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews->add($review);
-            $review->setAuthor($this);
+            $review->setClient($this);
         }
 
         return $this;
@@ -233,8 +291,8 @@ class User
     {
         if ($this->reviews->removeElement($review)) {
             // set the owning side to null (unless already changed)
-            if ($review->getAuthor() === $this) {
-                $review->setAuthor(null);
+            if ($review->getClient() === $this) {
+                $review->setClient(null);
             }
         }
 
@@ -244,16 +302,16 @@ class User
     /**
      * @return Collection<int, address>
      */
-    public function getAddresses(): Collection
+    public function getAddress(): Collection
     {
-        return $this->addresses;
+        return $this->address;
     }
 
     public function addAddress(address $address): static
     {
-        if (!$this->addresses->contains($address)) {
-            $this->addresses->add($address);
-            $address->setResident($this);
+        if (!$this->address->contains($address)) {
+            $this->address->add($address);
+            $address->setClient($this);
         }
 
         return $this;
@@ -261,10 +319,10 @@ class User
 
     public function removeAddress(address $address): static
     {
-        if ($this->addresses->removeElement($address)) {
+        if ($this->address->removeElement($address)) {
             // set the owning side to null (unless already changed)
-            if ($address->getResident() === $this) {
-                $address->setResident(null);
+            if ($address->getClient() === $this) {
+                $address->setClient(null);
             }
         }
 
@@ -274,15 +332,15 @@ class User
     /**
      * @return Collection<int, reservation>
      */
-    public function getReservations(): Collection
+    public function getReservation(): Collection
     {
-        return $this->reservations;
+        return $this->reservation;
     }
 
     public function addReservation(reservation $reservation): static
     {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
+        if (!$this->reservation->contains($reservation)) {
+            $this->reservation->add($reservation);
             $reservation->setClient($this);
         }
 
@@ -291,7 +349,7 @@ class User
 
     public function removeReservation(reservation $reservation): static
     {
-        if ($this->reservations->removeElement($reservation)) {
+        if ($this->reservation->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
             if ($reservation->getClient() === $this) {
                 $reservation->setClient(null);
