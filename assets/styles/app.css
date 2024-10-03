@@ -1,23 +1,48 @@
 body {
-    background-color: #C7F9CC;
+    background-color: white;
+    width: 100%
 }
 
-design-dark-blue {
+.design-dark-blue {
     background-color: #22577A;
 }
 
-design-blue {
+.design-blue {
     background-color: #38A3A5;
 }
 
-design-blue-green {
+.design-blue-green {
     background-color: #57CC99;
 }
 
-design-green {
+.design-green {
     background-color: #80ED99;
 }
 
-design-light-green {
+.design-light-green {
     background-color: #C7F9CC;
+}
+
+.text-dark-blue {
+    color: #22577A;
+}
+
+.text-blue {
+    color: #38A3A5;
+}
+
+.text-blue-green {
+    color: #57CC99;
+}
+
+.text-green {
+    color: #80ED99;
+}
+
+.text-light-green {
+    color: #C7F9CC;
+}
+
+.width-100 {
+    min-width: 100%;
 }
