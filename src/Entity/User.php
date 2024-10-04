@@ -240,6 +240,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function isAdmin(): ?bool
     {
         return true;
+        //TODO : remodifier
     }
 
     public function setAdmin(bool $is_admin): static
