@@ -90,8 +90,13 @@ class DashboardController extends AbstractDashboardController
 
 
         yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class)
-            ->setController(UserCrudController::class)
+            ->setController(UserCrudController::class);
 //            ->setPermission("ROLE_ADMIN")
-        ;
+
+        yield MenuItem::section('Back');
+        yield MenuItem::linkToRoute('To Homepage', 'fa fa-door-open', 'app_home');
+        yield MenuItem::linkToLogout('Logout', 'fa fa-arrow-right-from-bracket');
+
+
     }
 }

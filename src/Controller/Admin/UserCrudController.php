@@ -52,7 +52,7 @@ class UserCrudController extends AbstractCrudController
                     ],
                 ]),
 //             ->hideOnIndex(),
-        ArrayField::new('roles'),
+//        ArrayField::new('roles'),
             TextField::new('firstName')
                 ->setFormTypeOptions([
                     'constraints' => [

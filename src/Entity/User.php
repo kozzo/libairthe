@@ -239,17 +239,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isAdmin(): ?bool
     {
-         return in_array($this->getRoles(),['ROLE_ADMIN']);
+         return in_array('ROLE_ADMIN', $this->getRoles());
     }
 
-    public function setAdmin(bool $is_admin): static
+    public function setIsAdmin(bool $is_admin): static
     {
-        if($is_admin){
-            $this->setRoles(["ROLE_ADMIN", "ROLE_USER"]);
+        $roles = $this->getRoles();
+        if(!in_array("ROLE_ADMIN", $roles)){
+            array_push($roles, "ROLE_ADMIN");
         }else{
-            $this->setRoles(["ROLE_USER"]);
+            array_splice($roles, array_search("ROLE_ADMIN", $roles), 1);
         }
+
+        $this->setRoles($roles);
         return $this;
+
     }
 
     public function getExperiencePoints(): ?int

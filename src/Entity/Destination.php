@@ -35,6 +35,11 @@ class Destination
         $this->travels = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->label . ' - ' . $this->country;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -87,7 +87,7 @@ class TagCrudController extends AbstractCrudController implements EventSubscribe
                 ->setFormTypeOptions([
                     'constraints' => [
                         new Regex([
-                            'pattern' => '/^[A-Za-zÀ-ÖØ-öø-ÿ0-9%()\' ]{2,}+$/',
+                            'pattern' => '/^[A-Za-zÀ-ÖØ-öø-ÿ0-9%!?()\' ]{2,}+$/',
                             'message' => 'Content needs at least 2 characters.'
                         ]),
                     ],
