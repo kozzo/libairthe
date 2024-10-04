@@ -81,7 +81,7 @@ class Travel
     private Collection $categories;
 
     /**
-     * @var Collection<int, tag>
+     * @var Collection<int, Tag>
      */
     #[ORM\ManyToMany(targetEntity: tag::class, inversedBy: 'travels')]
     private Collection $tags;
@@ -364,7 +364,7 @@ class Travel
     }
 
     /**
-     * @return Collection<int, tag>
+     * @return Collection<int, Tag>
      */
     public function getTags(): Collection
     {
