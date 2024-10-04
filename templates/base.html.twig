@@ -19,7 +19,6 @@
 
 		{% block body %}
 
-
 			<div class="container m-0 design-blue width-100">
 				<header class="m-0 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom width-100">
 					<div class="col-3 mx-2 container d-flex justify-content-start">
@@ -74,8 +73,8 @@
 						<li><a href="/" class="mx-2 nav-link text-green text-decoration-underline px-2">Accueil</a></li>
 						<li><a href="#" class="mx-2 nav-link text-white px-2">FAQ</a></li>
 						<li><a href="#" class="mx-2 nav-link text-white px-2">A propos</a></li>
-						<li><a href="app_cgv" class="mx-2 nav-link text-white px-2">CGU/CGV</a></li>
-						<li><a href="app_legal_notice" class="mx-2 nav-link text-white px-2">Mentions légales</a></li>
+						<li><a href="{{ path('app_cgv') }}" class="mx-2 nav-link text-white px-2">CGU/CGV</a></li>
+						<li><a href="{#{{ path('app_legal_notice') }}#}" class="mx-2 nav-link text-white px-2">Mentions légales</a></li>
 					</ul>
 					<p class="text-center text-white mt-3">© 2024 Dernier Voyage &#9992;</p>
 				</footer>
