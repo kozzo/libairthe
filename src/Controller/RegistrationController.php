@@ -43,7 +43,7 @@ class RegistrationController extends AbstractController
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setUpdatedAt(new \DateTimeImmutable());
 
-            $user->setVerified(false);
+            $user->setVerified(true);
 
             $user->setExperiencePoints(0);
 

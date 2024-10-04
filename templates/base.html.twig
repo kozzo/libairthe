@@ -28,13 +28,13 @@
 						</a>
 					</div>
 
-					<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+					<ul class="nav col-12 col-md-auto mb-2 d-flex justify-content-center mb-md-0">
 						<li><a href="/" class="nav-link text-green text-decoration-underline px-2">Accueil</a></li>
 						<li><a href="#" class="nav-link text-white px-2">FAQ</a></li>
 						<li><a href="#" class="nav-link text-white px-2">A propos</a></li>
 					</ul>
 
-					<div class="col-md-4 mx-4 d-flex justify-content-end">
+					<div class="col-md-4 mx-4 d-flex align-items-end justify-content-center">
 						{% if app.user %}
 							<div class="fw-bold text-white m-auto mx-2"> Bienvenue {{ app.user.firstName }} ! &#9992;
 							</div>
@@ -50,12 +50,12 @@
 				</header>
 			</div>
 
-			<div class="container m-0 p-0 width-100">
+			<div class="container m-0 p-0 width-100 d-flex align-items-center justify-content-center">
 				{% block content %}{% endblock %}
 			</div>
 
 			<div class="container m-0 p-0 mb-4 d-flex flex-wrap align-items-center justify-content-center width-100">
-				<div class="card p-3 shadow-lg col-md-5 mt-5 offset-md-1 mb-3">
+				<div class="card p-3 shadow-lg col-md-5 mt-5 mb-3">
 					<form>
 						<h5>Inscrivez-vous à la newsletter</h5>
 						<p>Reçevez un maximum de promotions directement dans votre boîte mail !</p>
@@ -74,8 +74,8 @@
 						<li><a href="/" class="mx-2 nav-link text-green text-decoration-underline px-2">Accueil</a></li>
 						<li><a href="#" class="mx-2 nav-link text-white px-2">FAQ</a></li>
 						<li><a href="#" class="mx-2 nav-link text-white px-2">A propos</a></li>
-						{#                        <li><a href="app_cgv" class="mx-2 nav-link text-white px-2">CGU/CGV</a></li>
-						<li><a href="app_legal_notice" class="mx-2 nav-link text-white px-2">Mentions légales</a></li> #}
+						<li><a href="app_cgv" class="mx-2 nav-link text-white px-2">CGU/CGV</a></li>
+						<li><a href="app_legal_notice" class="mx-2 nav-link text-white px-2">Mentions légales</a></li>
 					</ul>
 					<p class="text-center text-white mt-3">© 2024 Dernier Voyage &#9992;</p>
 				</footer>
