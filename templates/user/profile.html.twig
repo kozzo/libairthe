@@ -20,8 +20,8 @@
 						<li class="list-group-item fw-bold text-danger">
 							{{ dump(user) }}
 							{% if user.addresses is not empty %}
-								{% for address in addresses %}
-									user.address
+								{% for address in user.addresses %}
+									address
 								{% endfor %}
 							{% else %}
 								Vous n'avez aucune adresse par défaut.
@@ -33,7 +33,7 @@
 				<a href="#" class="btn btn-primary fw-bold text-danger">Modifier vos informations (TODO)</a>
 			</div>
 			<div class="card-footer text-body-secondary">
-
+				<a href="{{ path('app_user_add_address') }}" class="btn btn-primary fw-bold">Ajouter une adresse</a>
 			</div>
 		</div>
 	</div>

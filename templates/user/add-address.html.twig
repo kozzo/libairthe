@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %} Mon espace client {% endblock %}
+
+{% block content %}
+	{% set user = app.user %}
+	<div class="width-100 container d-flex justify-content-center align-items-center">
+		<div class="card text-center shadow-lg m-4 mt-5 col-5">
+			<div class="card-header fw-bold fs-5">
+				Vos informations personnelles
+			</div>
+			<div class="card-body">
+				<div class="card-text">
+					{{ form_start(addressForm) }}
+					<div class="width-100 d-flex flex-column justify-content-center align-items-center">
+						<button type="submit" class="btn btn-primary design-blue">Ajouter mon adresse</button>
+					</div>
+					{{ form_end(addressForm) }}
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

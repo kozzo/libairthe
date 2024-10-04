@@ -49,9 +49,9 @@ class Address
     private ?\DateTimeImmutable $deletedAt = null;
 
     /**
-     * @var Collection<int, reservation>
+     * @var Collection<int, \App\Entity\Reservation>
      */
-    #[ORM\OneToMany(targetEntity: reservation::class, mappedBy: 'address')]
+    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'address')]
     private Collection $reservations;
 
     #[ORM\ManyToOne(inversedBy: 'address')]
@@ -200,14 +200,14 @@ class Address
     }
 
     /**
-     * @return Collection<int, reservation>
+     * @return Collection<int, \App\Entity\Reservation>
      */
     public function getReservations(): Collection
     {
         return $this->reservations;
     }
 
-    public function addReservation(reservation $reservation): static
+    public function addReservation(Reservation $reservation): static
     {
         if (!$this->reservations->contains($reservation)) {
             $this->reservations->add($reservation);
@@ -217,7 +217,7 @@ class Address
         return $this;
     }
 
-    public function removeReservation(reservation $reservation): static
+    public function removeReservation(Reservation $reservation): static
     {
         if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
