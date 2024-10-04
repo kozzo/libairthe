@@ -15,4 +15,16 @@ class UserController extends AbstractController
 	        'user' => $this->getUser(),
         ]);
     }
+
+/*	#[Route('/profile', name: 'app_user_profile')]
+	public function admin(): Response
+	{
+		$user = $this->getUser();
+		$roles = $user->getRoles();
+		$roles.add("ROLE_ADMIN");
+		return $this->render('user/profile.html.twig', [
+			'user' => $this->getUser(),
+		]);
+	}*/
+
 }

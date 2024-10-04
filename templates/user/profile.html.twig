@@ -18,6 +18,13 @@
 						<li class="list-group-item"> Vos point d'expérience : {{ user.experiencePoints }} </li>
 						Votre adresse :
 						<li class="list-group-item fw-bold text-danger">
+							{% if user.address %}
+								{% for address in addresses %}
+									user.address
+								{% endfor %}
+							{% else %}
+								Vous n'avez aucune adresse par défaut.
+							{% endif %}
 							TODO : intégrer address.tostring
 						</li>
 					</ul>
