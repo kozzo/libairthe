@@ -3,6 +3,10 @@ body {
     width: 100%
 }
 
+legal-content {
+
+}
+
 .design-dark-blue {
     background-color: #22577A;
 }
@@ -45,4 +49,13 @@ body {
 
 .width-100 {
     min-width: 100%;
+}
+
+.legal-style {
+    margin: auto;
+    width: 80%;
+}
+
+.legal-style > div {
+    padding: 1.5%;
 }
