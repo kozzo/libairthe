@@ -51,7 +51,7 @@ class AddressCrudController extends AbstractCrudController implements EventSubsc
                 $slugCity.'-'.
                 $slugCountry
         );
-        $entity->setSlug($slug);
+        $entity->setSlug(strtolower($slug));
     }
     public static function getEntityFqcn(): string
     {
@@ -86,12 +86,12 @@ class AddressCrudController extends AbstractCrudController implements EventSubsc
         $slugCity = $this->slugger->slug($entityInstance->getCity());
         $slugCountry = $this->slugger->slug($entityInstance->getCountry());
 
-        $entityInstance->setSlug(
+        $entityInstance->setSlug(strtolower(
             $entityInstance->getZipCode().'-'.
             $slugStreet.'-'.
             $slugCity.'-'.
             $slugCountry
-        );
+        ));
         parent::updateEntity($entityManager, $entityInstance);
     }
 

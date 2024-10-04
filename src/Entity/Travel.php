@@ -74,10 +74,24 @@ class Travel
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'travel')]
     private Collection $reservations;
 
+    /**
+     * @var Collection<int, Category>
+     */
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'travels')]
+    private Collection $categories;
+
+    /**
+     * @var Collection<int, tag>
+     */
+    #[ORM\ManyToMany(targetEntity: tag::class, inversedBy: 'travels')]
+    private Collection $tags;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -321,6 +335,54 @@ class Travel
                 $reservation->setTravel(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, tag>
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(tag $tag): static
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(tag $tag): static
+    {
+        $this->tags->removeElement($tag);
 
         return $this;
     }
