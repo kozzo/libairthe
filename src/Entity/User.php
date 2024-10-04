@@ -85,8 +85,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
-        $this->address = new ArrayCollection();
-        $this->reservation = new ArrayCollection();
+        $this->addresses = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,14 +263,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, review>
+     * @return Collection<int, \App\Entity\Review>
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(review $review): static
+    public function addReview(Review $review): static
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews->add($review);
@@ -280,7 +280,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeReview(review $review): static
+    public function removeReview(Review $review): static
     {
         if ($this->reviews->removeElement($review)) {
             // set the owning side to null (unless already changed)
@@ -293,26 +293,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, address>
+     * @return Collection<int, \App\Entity\Address>
      */
-    public function getAddress(): Collection
+    public function getAddresses(): Collection
     {
-        return $this->address;
+        return $this->addresses;
     }
 
-    public function addAddress(address $address): static
+    public function addAddress(Address $address): static
     {
-        if (!$this->address->contains($address)) {
-            $this->address->add($address);
+        if (!$this->addresses->contains($address)) {
+            $this->addresses->add($address);
             $address->setClient($this);
         }
 
         return $this;
     }
 
-    public function removeAddress(address $address): static
+    public function removeAddress(Address $address): static
     {
-        if ($this->address->removeElement($address)) {
+        if ($this->addresses->removeElement($address)) {
             // set the owning side to null (unless already changed)
             if ($address->getClient() === $this) {
                 $address->setClient(null);
@@ -323,26 +323,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, reservation>
+     * @return Collection<int, \App\Entity\Reservation>
      */
     public function getReservation(): Collection
     {
-        return $this->reservation;
+        return $this->reservations;
     }
 
-    public function addReservation(reservation $reservation): static
+    public function addReservation(Reservation $reservation): static
     {
-        if (!$this->reservation->contains($reservation)) {
-            $this->reservation->add($reservation);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
             $reservation->setClient($this);
         }
 
         return $this;
     }
 
-    public function removeReservation(reservation $reservation): static
+    public function removeReservation(Reservation $reservation): static
     {
-        if ($this->reservation->removeElement($reservation)) {
+        if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
             if ($reservation->getClient() === $this) {
                 $reservation->setClient(null);
