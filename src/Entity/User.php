@@ -59,9 +59,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?bool $is_admin = null;
 
     #[ORM\Column]
-    private ?bool $is_validated = null;
-
-    #[ORM\Column]
     private ?int $experiencePoints = null;
 
     /**
@@ -242,24 +239,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isAdmin(): ?bool
     {
-        return $this->is_admin;
+        return true;
     }
 
     public function setAdmin(bool $is_admin): static
     {
         $this->is_admin = $is_admin;
-
-        return $this;
-    }
-
-    public function isValidated(): ?bool
-    {
-        return $this->is_validated;
-    }
-
-    public function setValidated(bool $is_validated): static
-    {
-        $this->is_validated = $is_validated;
 
         return $this;
     }
