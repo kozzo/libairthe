@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Address;
 use App\Form\AddressType;
+use App\Repository\AddressRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,7 +54,17 @@ class UserController extends AbstractController
 		]);
 	}
 
+	#[Route('/delete-address/{slug}', name: 'app_user_address_delete', methods: ['POST'])]
+	public function delete(Request $request, AddressRepository $addressRepository, string $slug): Response
+	{
+		$address = $addressRepository->findOneBy(['slug' => $slug]);
 
+		if ($address && $this->isCsrfTokenValid('delete' . $address->getSlug(), $request->request->get('_token'))) {
+			$addressRepository->remove($address, true);
+		}
+
+		return $this->redirectToRoute('app_user_profile');
+	}
 
 /*	#[Route('/profile', name: 'app_user_profile')]
 	public function admin(): Response

@@ -83,7 +83,7 @@ class Travel
     /**
      * @var Collection<int, Tag>
      */
-    #[ORM\ManyToMany(targetEntity: tag::class, inversedBy: 'travels')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'travels')]
     private Collection $tags;
 
     public function __construct()
