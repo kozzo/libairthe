@@ -1,0 +1,648 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} FAQ {% endblock %}
+
+{% block content %}
+    <div class="full-text-style">
+        <div class="accordion" id="accordionFAQ">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#Payment"
+                            aria-expanded="false" aria-controls="Payment">
+                        <b>Paiement</b>
+                    </button>
+                </div>
+                <div id="Payment" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        <div class="accordion" id="accordionInsidePayement">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                        Dois-je me déplacer pour régler mon voyage ?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePayement">
+                                    <div class="accordion-body">
+                                        <p>Si vous souhaitez nous régler auprès de nos services directement, vous pouvez
+                                            vous rendre à notre siège.
+                                            L’Accueil physique de notre siège est ouvert <b>du lundi au vendredi de 9h à
+                                                19h et
+                                                le samedi de 10h à 19h</b>, sans interruption.
+                                            Vous pouvez venir régler par carte bleue, déposer vos chèques ou
+                                            chèques-vacances ANCV sur place.
+                                            Le montant maximum que nous prenons est de 1 000 € pour l’ensemble du
+                                            dossier.
+                                            Si vous avez réservé en agence, vous avez la possibilité de vous y déplacer.
+                                        </p>
+
+                                        <p>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                            ne
+                                            sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                            Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                            disposition par téléphone au numéro indiqué dans notre rubrique Nous
+                                            contacter.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Comment puis-je régler mon séjour ?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePayement">
+                                    <div class="accordion-body">
+                                        <p><b>Attention :</b> Si vous résidez à l'étranger ou dans les DOM-TOM, seules
+                                            les cartes
+                                            bleues françaises sont acceptées.</p>
+
+                                        <b>Moyens de paiement disponibles :</b>
+                                        <ul>
+                                            <li>1. Vous souhaitez réserver un séjour par carte bancaire :
+
+                                                Sur notre site sécurisé, vous pourrez renseignez votre numéro de carte
+                                                bancaire,
+                                                sa date d'expiration, le nom du porteur, et le cryptogramme afin de
+                                                valider
+                                                votre réservation.
+
+
+                                                Contactez un de nos conseillers afin qu'il puisse vous aider à finaliser
+                                                votre
+                                                projet. Vous retrouverez nos coordonnées téléphoniques directement sur
+                                                l'article
+                                                Nous appeler.
+                                            </li>
+
+                                            <li>2. Votre séjour est confirmé, vous souhaitez solder votre facture par
+                                                carte
+                                                bancaire :
+
+                                                Contactez notre Service Facturation au 0173190303, disponible du lundi
+                                                au samedi
+                                                de 10h à 18h sans interruption. Munissez-vous de votre numéro de dossier
+                                                (envoyé
+                                                dans le mail de confirmation). Il se compose de 10 caractères, qui sont
+                                                une
+                                                suite de chiffres ou de lettres et de chiffres. Veillez à bien vérifier
+                                                les
+                                                caractères précis (ex : chiffre « 0 » / lettre « O »)
+
+                                                Jusqu'à 3 cartes bancaires peuvent être utilisées. Nous acceptons les
+                                                cartes
+                                                françaises, suisses ou belges, y compris Visa (hors Electron) et
+                                                Eurocard/Mastercard
+
+                                                <b>Attention :</b> Certaines cartes bancaires délivrées en France, mais
+                                                rattachées à
+                                                des banques étrangères (ex. N26), peuvent ne pas être acceptées.
+                                            </li>
+                                        </ul>
+
+                                        <b>Autres moyens de paiement :</b>
+                                        <ul>
+                                            <li><b>Chèques bancaires ou postaux :</b>
+                                                <ul>
+                                                    <li>Non acceptés à moins de 30 jours du départ.</li>
+                                                    <li>Libellés à l'ordre de KARAVEL, avec votre numéro de dossier au
+                                                        dos.
+                                                    </li>
+                                                    <li>Envoyés à : Service Facturation KARAVEL, 17 rue de l’Échiquier
+                                                        75010
+                                                        PARIS.
+                                                    </li>
+                                                    <li><b>Cas particulier : les chèques Comité d'Entreprise</b> sont
+                                                        acceptés
+                                                        à moins
+                                                        de 30
+                                                        jours si le dossier est déjà soldé (un remboursement du
+                                                        trop-perçu sera
+                                                        effectué).
+                                                    </li>
+                                                </ul>
+
+                                                <p><b>Pour un paiement par chèques (bancaire ou postal),
+                                                        Chèques-vacances
+                                                        ANCV,
+                                                        espèce,</b> nous vous recommandons de consulter nos Conditions
+                                                    Générales de Vente
+                                                    (article 2.4) dans l'onglet "Paiement et factures" de votre Espace
+                                                    Client. Nos
+                                                    Conditions sont aussi accessibles en bas de la page d’accueil de
+                                                    notre
+                                                    site ou
+                                                    directement via ce lien.</p>
+
+
+                                                <p><b>A noter :</b> tout moyen de paiement nécessite obligatoirement la
+                                                    prise
+                                                    d’une carte
+                                                    bleue en garantie. À la confirmation de votre voyage, nous
+                                                    procéderons
+                                                    uniquement à l'encaissement du moyen de règlement que vous nous
+                                                    aurez
+                                                    indiqué.</p>
+                                            </li>
+                                            <li><b>Virements bancaires :</b>
+                                                <p>Non acceptés à moins de 10 jours (France) ou 15 jours (étranger)
+                                                    avant
+                                                    le
+                                                    départ.
+                                                    Précisez votre numéro de dossier dans le libellé du virement.
+                                                    Attention : Les frais de virement sont à votre charge. En cas de
+                                                    retard
+                                                    de
+                                                    réception, votre carte en garantie sera débitée automatiquement.</p>
+                                            </li>
+
+                                            <li><b>Paiement en agence :</b>
+
+                                                <p>Si vous avez réservé dans une agence physique, vous pouvez y
+                                                    effectuer
+                                                    le
+                                                    règlement directement.</p>
+                                            </li>
+
+                                            <li><b>American Express: </b>
+
+                                                <p>Pour les montants supérieurs à 2 000 €, Amex est
+                                                    accepté
+                                                    sans frais.
+                                                    Pour les montants inférieurs, des frais de 3% seront appliqués si
+                                                    vous
+                                                    souhaitez
+                                                </p>
+                                        </ul>
+                                        <b>Important :</b>
+
+                                        Toute modification du mode de paiement doit être communiquée au moins 40
+                                        jours
+                                        avant le départ.
+                                        Tout règlement engage votre responsabilité en tant que client.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Comment régler avec plusieurs cartes bancaires ?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePayement">
+                                    <div class="accordion-body">
+                                        Vous pouvez le faire directement sur notre site Internet, lors de votre
+                                        réservation, en cochant la case appropriée, intitulée « Par plusieurs cartes
+                                        bancaires », dans l’interface « Choisissez votre moyen de paiement ».
+
+                                        <br>Vous pouvez également le faire par téléphone, en contactant notre Service
+                                        facturation, au 0173190303. Ce Service est ouvert du lundi au samedi, de 10h à
+                                        18h, sans interruption.
+
+                                        <br>Nous acceptons jusqu’à 3 cartes bancaires.
+
+                                        <br>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                        ne
+                                        sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                        Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                        disposition par téléphone au numéro indiqué dans notre rubrique Nous contacter.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#Preparation" aria-expanded="false" aria-controls="Preparation">
+                        <b>Préparer mon voyage</b>
+                    </button>
+                </div>
+                <div id="Preparation" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        <div class="accordion" id="accordionInsidePreparation">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                        Où puis-je trouver des informations sur les formats et poids des bagages
+                                        autorisés pour mon vol ?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePreparation">
+                                    <div class="accordion-body">
+                                        <div class="fw-content fw-content--single-article line-numbers">
+                                            <p>
+                                                Pour connaître les
+                                                dimensions et le poids des bagages autorisés par chaque compagnie
+                                                aérienne, veuillez consulter leur page spécifique. Vous trouverez
+                                                ci-dessous une liste des compagnies aériennes couramment utilisées.
+                                                Cliquez sur le nom de la compagnie pour accéder directement à leur page
+                                                de politique de bagages :
+                                            </p>
+                                            <ul style="font-family: Arial, Helvetica, sans-serif;">
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://fr.aegeanair.com/travel-info/travelling-with-aegean/bagages/politique-de-transport-de-bagages/"
+                                                            target="_blank">Aegean&nbsp;</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.air-austral.com/preparer-mon-vol/bagages.html"
+                                                            target="_blank">Air Austral</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.aircanada.com/ca/fr/aco/home/plan/baggage.html#/"
+                                                            target="_blank">Air Canada</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.aircaraibes.com/services/aeroport/bagages"
+                                                            target="_blank">Air Caraïbes</a></li>
+                                                <li><a
+                                                            dir="ltr" href="https://www.aircorsica.com/bagages/"
+                                                            target="_blank">Air Corsica</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://wwws.airfrance.fr/information/bagages/bagage-cabine-soute"
+                                                            target="_blank">Air France</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.airindia.com/in/en/travel-information/baggage-guidelines.html"
+                                                            target="_blank">Air India</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://madagascarairlines.com/air-madagascar/a-propos-dair-madagascar/vos-bagages-sur-air-madagascar.html#:~:text=Dimensions%20des%20bagages,dans%20les%20bagages%20en%20cabine."
+                                                            target="_blank">Air Madagascar</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://airmalta.com/fr-fr/flight-extras/bagages"
+                                                            target="_blank">Air Malta</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.airmauritius.com/fr/bagages/bagages-en-soute"
+                                                            target="_blank">Air Mauritius</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://fr.airtahitinui.com/franchise-bagages"
+                                                            target="_blank">Air Tahiti Nui</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.airtransat.com/fr-FR/info-voyage/bagages"
+                                                            target="_blank">Air Transat</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.aslairlines.fr/infos-voyageurs/preparez-votre-voyage/bagages/"
+                                                            target="_blank">ASL Airlines</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.austrian.com/fr/fr/baggage"
+                                                            target="_blank">Austrian Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.britishairways.com/fr-ca/information/atom/baggage-essentials/hand-baggage-allowances"
+                                                            target="_blank">British Airways</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.brusselsairlines.com/fr/fr/extra-services/baggage"
+                                                            target="_blank">Brussels Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.cathaypacific.com/cx/fr_FR/baggage.html"
+                                                            target="_blank">Cathay Pacific</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.flycorsair.com/fr/bagages"
+                                                            target="_blank">Corsair</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.croatiaairlines.com/fr/bagages"
+                                                            target="_blank">Croatia Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.easyjet.com/fr/aide/bagage/bagage-a-main-et-bagage-en-soute"
+                                                            target="_blank">EasyJet</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.egyptair.com/fr/fly/baggage/Pages/default.aspx"
+                                                            target="_blank">Egyptair</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.emirates.com/fr/french/before-you-fly/baggage/"
+                                                            target="_blank">Emirates</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.ethiopianairlines.com/aa/fr/informations/informations-sur-les-bagages"
+                                                            target="_blank">Ethiopian Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.etihad.com/fr-fr/fly-etihad/baggage"
+                                                            target="_blank">Etihad Airways</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.evaair.com/fr-fr/fly-prepare/baggage/"
+                                                            target="_blank">Eva Air</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.finnair.com/fr-fr/bagages-sur-les-vols-finnair"
+                                                            target="_blank">Finnair</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.frenchbee.com/fr/preparer-voyage/a-laeroport/bagages"
+                                                            target="_blank">French Bee</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://wwws.airfrance.fr/information/bagages"
+                                                            target="_blank">Hop</a></li>
+                                                <li><a
+                                                            dir="ltr" href="https://www.iberia.com/fr/bagages/"
+                                                            target="_blank">Iberia</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.ita-airways.com/fr_fr/fly-ita/baggage.html"
+                                                            target="_blank">ITA Airways</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.kenya-airways.com/en/plan/baggage-information/baggage-allowance/"
+                                                            target="_blank">Kenya Airways</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.klm.fr/information/baggage"
+                                                            target="_blank">KLM</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.koreanair.com/fr/fr/airport/baggage/overview"
+                                                            target="_blank">Korean Air</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.lot.com/fr/fr/journey/baggage"
+                                                            target="_blank">LOT Polish Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.lufthansa.com/content/lh/gc/fr/prepare-for-your-trip/baggage"
+                                                            target="_blank">Lufthansa</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.luxair.lu/fr/information/bagages"
+                                                            target="_blank">Luxair</a></li>
+                                                <li><a
+                                                            dir="ltr" href="https://www.nouvelair.com/fr/bagage"
+                                                            target="_blank">NouvelAir</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.qatarairways.com/en/baggage/allowance.html"
+                                                            target="_blank">Qatar Airways</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.royalairmaroc.com/fr-fr/information-bagage"
+                                                            target="_blank">Royal Air Maroc</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://help.ryanair.com/hc/fr-fr/sections/12489178346129-Politiques-relatives-aux-bagages"
+                                                            target="_blank">Ryanair</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.skyexpress.gr/fr/sky-experience/before-fly/fare-types"
+                                                            target="_blank">skyexpress</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.swiss.com/fr/fr/prepare/baggage"
+                                                            target="_blank">Swiss International Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.flytap.com/fr-fr/bagages"
+                                                            target="_blank">TAP Air Portugal</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.thaiairways.com/fr_FR/informations/voyage_pratique/baggage.page"
+                                                            target="_blank">Thai Airways</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.transavia.com/aide/fr-fr/bagages"
+                                                            target="_blank">Transavia</a></li>
+                                                <li><a
+                                                            dir="ltr" href="https://www.tuifly.fr/fr/bagage"
+                                                            target="_blank">TUI fly</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.tunisair.com/en-ci/node/377"
+                                                            target="_blank">Tunisair</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.turkishairlines.com/fr-int/any-questions/free-baggage/"
+                                                            target="_blank">Turkish Airlines</a>
+                                                </li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.volotea.com/fr/votre-reservation/ajouter-des-bagages/"
+                                                            target="_blank">Volotea</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.vueling.com/fr/services-vueling/preparez-votre-voyage/bagages"
+                                                            target="_blank">Vueling</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://www.westjet.com/fr-fr/bagages"
+                                                            target="_blank">Westjet</a></li>
+                                                <li><a
+                                                            dir="ltr"
+                                                            href="https://wizzair.com/fr-fr/informations-et-services/informations-de-voyage/bagages"
+                                                            target="_blank">Wizz Air</a></li>
+                                            </ul>
+                                            <p>Veuillez noter que les informations relatives aux dimensions et au poids
+                                                des bagages relèvent de la responsabilité de chaque compagnie aérienne.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Comment puis-je ajouter des bagages supplémentaires à ma réservation ?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePreparation">
+                                    <div class="accordion-body">
+                                        <p><b>Il existe deux situations :</b>
+                                        <ul>
+                                            <li><b>Vous avez votre code PNR</b></li>
+                                            <li><b>Vous n'avez pas votre code PNR</b></li>
+                                        </ul>
+                                        </p>
+
+
+                                        <p><b>Vous avez votre code PNR</b>
+
+                                            <br>Vous devez ajouter les bagages vous-même directement sur le site de votre
+                                            compagnie aérienne. Pour vous connecter à votre espace de réservation vol,
+                                            utilisez votre code de réservation PNR.
+                                        </p>
+
+                                        <p><b>Vous n'avez pas votre code PNR</b>
+
+                                            Pour l'obtenir, vous pouvez nous contacter :
+
+                                        <ul>
+                                            <li><b>Par écrit sur votre espace client</b>
+
+                                                <br>Cliquez sur l’onglet "Nous écrire" accessible en bas à droite de notre
+                                                site, puis sur "Comment pouvons-nous vous aider? "
+                                                Pour " votre demande concerne" sélectionnez "Un départ à venir" > "J'ai
+                                                une question sur les bagages" > "Ajouter des bagages"
+                                                Décrivez votre demande en précisant le nombre et le poids de bagages
+                                                souhaités
+                                                Vous recevrez une confirmation par e-mail après traitement, avec votre
+                                                facture mise à jour
+                                            </li>
+
+
+                                            <li><b>Par téléphone en consultant l'article Nous appeler</b>
+
+                                                Préparez les informations suivantes avant d'appeler : Numéro de
+                                                réservation, nombre et poids de bagages à ajouter
+                                                Expliquez votre demande à notre conseiller, qui s'occupera de la faire
+                                                pour vous
+                                                Vous recevrez une confirmation par e-mail après traitement, avec votre
+                                                facture mise à jour
+                                            </li>
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Accordion Item #3
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePreparation">
+                                    <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by
+                                        default, until the collapse plugin adds the appropriate classes that we use to
+                                        style each element. These classes control the overall appearance, as well as the
+                                        showing and hiding via CSS transitions. You can modify any of this with custom
+                                        CSS or overriding our default variables. It's also worth noting that just about
+                                        any HTML can go within the <code>.accordion-body</code>, though the transition
+                                        does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#Reservation" aria-expanded="false" aria-controls="Reservation">
+                        <b>Gérer ma réservation</b>
+                    </button>
+                </div>
+                <div id="Reservation" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
+                        limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#AfterTravel" aria-expanded="false" aria-controls="AfterTravel">
+                        <b>Après mon voyage</b>
+                    </button>
+                </div>
+                <div id="AfterTravel" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
+                        limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#PersonalData" aria-expanded="false" aria-controls="PersonalData">
+                        <b>Gérer mes données personnelles</b>
+                    </button>
+                </div>
+                <div id="PersonalData" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
+                        limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#ContactUs" aria-expanded="false" aria-controls="ContactUs">
+                        <b>Contacter l'équipe Lib-Air-Thé</b>
+                    </button>
+                </div>
+                <div id="ContactUs" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that
+                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
+                        limit
+                        overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
