@@ -71,13 +71,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var Collection<int, address>
      */
     #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'client')]
-    private Collection $address;
+    private Collection $addresses;
 
     /**
      * @var Collection<int, reservation>
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'client')]
-    private Collection $reservation;
+    private Collection $reservations;
 
     #[ORM\Column]
     private bool $isVerified = false;
