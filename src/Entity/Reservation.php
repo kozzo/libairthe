@@ -167,24 +167,24 @@ class Reservation
         return $this;
     }
 
-    public function getTravel(): ?travel
+    public function getTravel(): ?Travel
     {
         return $this->travel;
     }
 
-    public function setTravel(?travel $travel): static
+    public function setTravel(?Travel $travel): static
     {
         $this->travel = $travel;
 
         return $this;
     }
 
-    public function getReview(): ?review
+    public function getReview(): ?Review
     {
         return $this->review;
     }
 
-    public function setReview(?review $review): static
+    public function setReview(?Review $review): static
     {
         $this->review = $review;
 

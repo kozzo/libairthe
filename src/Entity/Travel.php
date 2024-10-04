@@ -371,7 +371,7 @@ class Travel
         return $this->tags;
     }
 
-    public function addTag(tag $tag): static
+    public function addTag(Tag $tag): static
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
@@ -380,7 +380,7 @@ class Travel
         return $this;
     }
 
-    public function removeTag(tag $tag): static
+    public function removeTag(Tag $tag): static
     {
         $this->tags->removeElement($tag);
 
