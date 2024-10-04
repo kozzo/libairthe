@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -32,7 +33,7 @@ class UserCrudController extends AbstractCrudController
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $entityInstance->setSlug($entityInstance->getFirstName().'-'.$entityInstance->getLastName());
-        $entityInstance->setUpdatedAt(new \DateTime());
+        $entityInstance->setUpdatedAt(new \DateTimeImmutable());
         parent::updateEntity($entityManager, $entityInstance);
     }
 
@@ -51,6 +52,7 @@ class UserCrudController extends AbstractCrudController
                     ],
                 ]),
 //             ->hideOnIndex(),
+        ArrayField::new('roles'),
             TextField::new('firstName')
                 ->setFormTypeOptions([
                     'constraints' => [

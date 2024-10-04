@@ -240,4 +240,11 @@ class Address
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return
+            $this->getStreet() . ' ' . $this->getZipCode() . ' ' . $this->getCity() . ' ' . $this->getCountry(). ' \n'.
+            $this->getFirstName() . ' ' . $this->getLastName(). ' ' . $this->getPhone();
+    }
 }

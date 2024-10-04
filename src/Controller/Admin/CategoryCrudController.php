@@ -49,7 +49,6 @@ class CategoryCrudController extends AbstractCrudController implements EventSubs
     public function createEntity($entityFqcn): Category
     {
         $category = new Category();
-        $category->setSlug($category->getLabel().'-category');
 
         return $category;
     }

@@ -239,14 +239,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isAdmin(): ?bool
     {
-        return true;
-        //TODO : remodifier
+         return in_array($this->getRoles(),['ROLE_ADMIN']);
     }
 
     public function setAdmin(bool $is_admin): static
     {
-        $this->is_admin = $is_admin;
-
+        if($is_admin){
+            $this->setRoles(["ROLE_ADMIN", "ROLE_USER"]);
+        }else{
+            $this->setRoles(["ROLE_USER"]);
+        }
         return $this;
     }
 
