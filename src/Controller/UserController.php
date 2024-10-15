@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Address;
+use App\Entity\User;
 use App\Form\AddressType;
+use App\Form\UserType;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,7 +57,7 @@ class UserController extends AbstractController
 	}
 
 	#[Route('/delete-address/{slug}', name: 'app_user_address_delete', methods: ['POST'])]
-	public function delete(Request $request, AddressRepository $addressRepository, string $slug): Response
+	public function deleteAddress(Request $request, AddressRepository $addressRepository, string $slug): Response
 	{
 		$address = $addressRepository->findOneBy(['slug' => $slug]);
 
@@ -64,6 +66,36 @@ class UserController extends AbstractController
 		}
 
 		return $this->redirectToRoute('app_user_profile');
+	}
+
+	#[Route('/edit/{slug}', name: 'app_user_crud_edit')]
+	public function edit(Request $request, EntityManagerInterface $entityManager): Response
+	{
+		$user = $this->getUser();
+		$form = $this->createForm(UserType::class, $user);
+		$form->handleRequest($request);
+
+		if ($form->isSubmitted() && $form->isValid()) {
+			$entityManager->flush();
+
+			return $this->redirectToRoute('app_user_profile');
+		}
+
+		return $this->render('user_crud/edit.html.twig', [
+			'user' => $user,
+			'form' => $form,
+		]);
+	}
+
+	#[Route('/delete/{slug}', name: 'app_user_crud_delete')]
+	public function delete(Request $request, EntityManagerInterface $entityManager): Response
+	{
+		$user = $this->getUser();
+		$user->setDeletedAt(new \DateTimeImmutable());
+
+		return $this->redirectToRoute('app_home');
+
+
 	}
 
 /*	#[Route('/profile', name: 'app_user_profile')]

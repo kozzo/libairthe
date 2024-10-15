@@ -15,7 +15,7 @@
 						<li class="list-group-item"> Nom : {{ user.lastName }} </li>
 						<li class="list-group-item"> Email : {{ user.email }} </li>
 						<li class="list-group-item"> Compte créé le {{ user.createdAt|date("d/m/Y") }} </li>
-						<li class="list-group-item"> Vos point d'expérience : {{ user.experiencePoints }} </li>
+						<li class="list-group-item"> Vos points d'expérience : {{ user.experiencePoints }} </li>
 						<div class="card-body">
 							{% if user.addresses.count <= 1 %}
 								Votre adresse :
@@ -45,7 +45,7 @@
 					<a href="{{ path('app_user_add_address') }}" class="btn btn-primary fw-bold">Ajouter une adresse</a>
 				</div>
 			</div>
-			<a href="#" class="btn btn-primary fw-bold text-danger">Modifier vos informations (TODO)</a>
+			<a href="{{ path('app_user_crud_edit', {'slug': user.slug}) }}" class="btn btn-primary fw-bold text-danger">Modifier vos informations (TODO)</a>
 		</div>
 	</div>
 {% endblock %}
