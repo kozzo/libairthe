@@ -25,57 +25,59 @@
             <header class="m-0 py-3 border-bottom width-100">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <div class="container-fluid">
-                        <a href="/" class="navbar-brand">
+                        <a href="/" class="navbar-brand d-inline-block" style="width: auto;">
                             <img src="{{ asset('images/LOGO_LIBAIRTHE_BLANC.png') }}" alt="Logo liberté"
-                                 style="width:25%; max-height: 250px">
+                                 style="height: 100px;">
                         </a>
+                        <p class="d-none d-sm-block d-md-none d-lg-block text-white fs-1 m-1">LIB-AIR-THÉ</p>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                                 aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul class="navbar-nav ms-auto text-end mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-white px-2">FAQ</a>
+                                    <a href="#" class="nav-link text-white fs-5 my-auto">FAQ</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link text-white px-2">À propos</a>
+                                    <a href="#" class="nav-link text-white fs-5">À propos</a>
                                 </li>
-                            </ul>
-                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                 {% if app.user %}
                                     <!-- On larger screens, these will be buttons; on small screens, they will behave as links -->
-                                    <li class="nav-item d-md-none">
-                                        <a href="{{ path('app_logout') }}" class="nav-link text-danger">Déconnexion</a>
+
+                                    <li class="nav-item d-md-block d-none">
+                                        <a href="{{ path('admin') }}"
+                                           class="btn btn-success ms-1">Accès Admin</a>
                                     </li>
                                     <li class="nav-item d-md-none">
-                                        <a href="{{ path('app_user_profile') }}" class="nav-link text-primary">{{ app.user.firstName }}</a>
+                                        <a href="{{ path('admin') }}" class="nav-link text-white fs-4">Accès Admin</a>
                                     </li>
                                     <li class="nav-item d-md-block d-none">
                                         <a href="{{ path('app_user_profile') }}"
-                                           class="btn btn-primary design-dark-blue mx-2">{{ app.user.firstName }}</a>
+                                           class="btn btn-primary design-dark-blue ms-1">Mon Espace ({{ app.user.firstName }})</a>
+                                    </li>
+                                    <li class="nav-item d-md-none">
+                                        <a href="{{ path('app_user_profile') }}" class="nav-link text-white fs-4">Mon Espace ({{ app.user.firstName }})</a>
                                     </li>
                                     <li class="nav-item d-md-block d-none">
-                                        <a href="{{ path('admin') }}"
-                                           class="btn btn-success">Accès Admin</a>
+                                        <a href="{{ path('app_logout') }}" class="btn btn-danger ms-1">Déconnexion</a>
                                     </li>
-                                    <li class="nav-item d-md-block d-none">
-                                        <a href="{{ path('app_logout') }}" class="btn btn-danger mx-2">Déconnexion</a>
+                                    <li class="nav-item d-md-none">
+                                        <a href="{{ path('app_logout') }}" class="nav-link text-danger fs-4">Déconnexion</a>
                                     </li>
                                 {% else %}
-                                    <li class="nav-item d-lg-none">
-                                        <a href="{{ path('app_login') }}" class="nav-link text-success">Se connecter</a>
+                                    <li class="nav-item d-md-none">
+                                        <a href="{{ path('app_login') }}" class="nav-link text-white fs-4">Se connecter</a>
                                     </li>
-                                    <li class="nav-item d-lg-none">
-                                        <a href="{{ path('app_register') }}"
-                                           class="nav-link text-primary">S'inscrire</a>
-                                    </li>
-                                    <li class="nav-item d-lg-block d-none">
+                                    <li class="nav-item d-md-block d-none">
                                         <a href="{{ path('app_login') }}" class="btn btn-success design-green mx-2">Se
                                             connecter</a>
                                     </li>
-                                    <li class="nav-item d-lg-block d-none">
+                                    <li class="nav-item d-md-none">
+                                        <a href="{{ path('app_register') }}" class="nav-link text-white fs-4">S'inscrire</a>
+                                    </li>
+                                    <li class="nav-item d-md-block d-none">
                                         <a href="{{ path('app_register') }}" class="btn btn-primary design-dark-blue">S'inscrire</a>
                                     </li>
                                 {% endif %}
