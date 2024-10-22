@@ -543,19 +543,22 @@
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseThree" aria-expanded="false"
                                             aria-controls="collapseThree">
-                                        Accordion Item #3
+                                        Pourquoi mon bagage n’apparaît-il pas dans mon carnet de voyage ?
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse"
                                      data-bs-parent="#accordionInsidePreparation">
                                     <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by
-                                        default, until the collapse plugin adds the appropriate classes that we use to
-                                        style each element. These classes control the overall appearance, as well as the
-                                        showing and hiding via CSS transitions. You can modify any of this with custom
-                                        CSS or overriding our default variables. It's also worth noting that just about
-                                        any HTML can go within the <code>.accordion-body</code>, though the transition
-                                        does limit overflow.
+                                        <p>Si vous avez ajouté des bagages après votre réservation, il est possible que ces informations ne soient pas immédiatement mises à jour dans votre carnet de voyage.
+                                            Rassurez-vous, cela n'affecte pas votre réservation ni les services associés. <b> Nous vous recommandons de consulter directement le site de la compagnie aérienne</b>
+                                            pour obtenir les détails spécifiques à votre vol, y compris les type et nombre de bagages inclus dans votre réservation.
+                                        </p>
+
+                                        <p>Pour vous connecter à votre espace de réservation vol, suivez les instructions sur votre convocation, généralement disponibles à la page 6 ou 7,
+                                        dans la section "De 1 à 7 jours avant votre départ : enregistrement en ligne".
+                                        Vous y trouverez votre référence de réservation vol (PNR) qui vous permettra d'accéder à votre espace de réservation,
+                                        ainsi que l'adresse mail à utiliser si elle est différente de votre adresse mail personnelle.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -572,14 +575,93 @@
                 </div>
                 <div id="Reservation" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that
-                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
-                        limit
-                        overflow.
+                        <div class="accordion" id="accordionInsideReservation">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                        Que se passe t-il si nous ne pouvons pas honorer votre demande ?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideReservation">
+                                    <div class="accordion-body">
+                                        <p>Si un voyage n'est plus disponible, <b>vous en serez avisé par un conseiller voyages.</b>
+                                            Votre demande de réservation sera considérée comme close et <b>aucun débit ne sera effectué sur votre compte.</b>
+                                            Bien sûr, dans ce cas, nous vous aiderons à choisir un autre voyage dans les meilleurs délais.
+                                            Nos conseillers sont habilités à trouver pour vous un produit équivalent à votre demande initiale,
+                                            selon les disponibilités à l’instant où vous nous contactez.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Quand serais-je prélevé une fois que mon voyage est confirmé ?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideReservation">
+                                    <div class="accordion-body">
+                                        <p>
+                                            Une fois votre voyage confirmé, votre réservation est transmise à notre service facturation qui procédera à l'encaissement.
+                                            <ul>
+                                                <li>
+                                                    <b>Pour les départs dans plus de 40 jours :</b>
+                                                    Un acompte de 40% sera prélevé sauf si vous avez demandé l’encaissement du montant total.
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <li>
+                                                    <b>Pour les départs dans moins de 40 jours :</b> Le montant total sera prélevé.
+                                                </li>
+                                            </ul>
+                                        </p>
+
+                                        Vous recevrez une facture par mail ou par fax dans un délai de 48h à 72h.
+                                        Cette facture sera libellée à vos noms et adresses et mentionnera le montant encaissé.
+
+
+                                        <b>Pour suivre l'état de votre réservation, vous pouvez vous rendre sur votre Espace client,
+                                            dans l'onglet « Statut de votre réservation ».</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Les tarifs comprennent-ils toutes les taxes ?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideReservation">
+                                    <div class="accordion-body">
+                                        <p>Pour les voyages, les tarifs affichés sur notre site sont toutes taxes d'aéroport incluses,
+                                        hors frais annexes, tels que les frais de dossier, les frais d'agence et les frais de dernière minute
+                                        (pour les réservations de moins de 7 jours avant départ).
+                                            Les prix sont sur la base d'un adulte partageant une chambre double.</p>
+
+
+                                        <p>Il est à noter que certains produits exigent des taxes à régler sur place
+                                        (de séjour, environnementale, écologique, caisse de bord, etc..).
+                                        De plus, certaines destinations, telles que le Cap Vert ou le Mexique, soumettent des taxes spécifiques.
+                                            Enfin, certaines excursions sont sujettes à des taxes.</p>
+
+
+                                        <p>Pour plus d’informations, veuillez consulter les descriptifs de nos séjours.
+
+                                        Vous trouverez dans ces derniers ce qui est inclus en bas de la rubrique « Résumé »
+                                            sous l'intitulé « Ce prix TTC comprend/Ce prix TTC ne comprend pas ».</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -592,14 +674,210 @@
                 </div>
                 <div id="AfterTravel" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that
-                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
-                        limit
-                        overflow.
+                        <div class="accordion" id="accordionInsideAfterTravel">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                        Dois-je me déplacer pour régler mon voyage ?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideAfterTravel">
+                                    <div class="accordion-body">
+                                        <p>Si vous souhaitez nous régler auprès de nos services directement, vous pouvez
+                                            vous rendre à notre siège.
+                                            L’Accueil physique de notre siège est ouvert <b>du lundi au vendredi de 9h à
+                                                19h et
+                                                le samedi de 10h à 19h</b>, sans interruption.
+                                            Vous pouvez venir régler par carte bleue, déposer vos chèques ou
+                                            chèques-vacances ANCV sur place.
+                                            Le montant maximum que nous prenons est de 1 000 € pour l’ensemble du
+                                            dossier.
+                                            Si vous avez réservé en agence, vous avez la possibilité de vous y déplacer.
+                                        </p>
+
+                                        <p>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                            ne
+                                            sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                            Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                            disposition par téléphone au numéro indiqué dans notre rubrique Nous
+                                            contacter.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Comment puis-je régler mon séjour ?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideAfterTravel">
+                                    <div class="accordion-body">
+                                        <p><b>Attention :</b> Si vous résidez à l'étranger ou dans les DOM-TOM, seules
+                                            les cartes
+                                            bleues françaises sont acceptées.</p>
+
+                                        <b>Moyens de paiement disponibles :</b>
+                                        <ul>
+                                            <li>1. Vous souhaitez réserver un séjour par carte bancaire :
+
+                                                Sur notre site sécurisé, vous pourrez renseignez votre numéro de carte
+                                                bancaire,
+                                                sa date d'expiration, le nom du porteur, et le cryptogramme afin de
+                                                valider
+                                                votre réservation.
+
+
+                                                Contactez un de nos conseillers afin qu'il puisse vous aider à finaliser
+                                                votre
+                                                projet. Vous retrouverez nos coordonnées téléphoniques directement sur
+                                                l'article
+                                                Nous appeler.
+                                            </li>
+
+                                            <li>2. Votre séjour est confirmé, vous souhaitez solder votre facture par
+                                                carte
+                                                bancaire :
+
+                                                Contactez notre Service Facturation au 0173190303, disponible du lundi
+                                                au samedi
+                                                de 10h à 18h sans interruption. Munissez-vous de votre numéro de dossier
+                                                (envoyé
+                                                dans le mail de confirmation). Il se compose de 10 caractères, qui sont
+                                                une
+                                                suite de chiffres ou de lettres et de chiffres. Veillez à bien vérifier
+                                                les
+                                                caractères précis (ex : chiffre « 0 » / lettre « O »)
+
+                                                Jusqu'à 3 cartes bancaires peuvent être utilisées. Nous acceptons les
+                                                cartes
+                                                françaises, suisses ou belges, y compris Visa (hors Electron) et
+                                                Eurocard/Mastercard
+
+                                                <b>Attention :</b> Certaines cartes bancaires délivrées en France, mais
+                                                rattachées à
+                                                des banques étrangères (ex. N26), peuvent ne pas être acceptées.
+                                            </li>
+                                        </ul>
+
+                                        <b>Autres moyens de paiement :</b>
+                                        <ul>
+                                            <li><b>Chèques bancaires ou postaux :</b>
+                                                <ul>
+                                                    <li>Non acceptés à moins de 30 jours du départ.</li>
+                                                    <li>Libellés à l'ordre de KARAVEL, avec votre numéro de dossier au
+                                                        dos.
+                                                    </li>
+                                                    <li>Envoyés à : Service Facturation KARAVEL, 17 rue de l’Échiquier
+                                                        75010
+                                                        PARIS.
+                                                    </li>
+                                                    <li><b>Cas particulier : les chèques Comité d'Entreprise</b> sont
+                                                        acceptés
+                                                        à moins
+                                                        de 30
+                                                        jours si le dossier est déjà soldé (un remboursement du
+                                                        trop-perçu sera
+                                                        effectué).
+                                                    </li>
+                                                </ul>
+
+                                                <p><b>Pour un paiement par chèques (bancaire ou postal),
+                                                        Chèques-vacances
+                                                        ANCV,
+                                                        espèce,</b> nous vous recommandons de consulter nos Conditions
+                                                    Générales de Vente
+                                                    (article 2.4) dans l'onglet "Paiement et factures" de votre Espace
+                                                    Client. Nos
+                                                    Conditions sont aussi accessibles en bas de la page d’accueil de
+                                                    notre
+                                                    site ou
+                                                    directement via ce lien.</p>
+
+
+                                                <p><b>A noter :</b> tout moyen de paiement nécessite obligatoirement la
+                                                    prise
+                                                    d’une carte
+                                                    bleue en garantie. À la confirmation de votre voyage, nous
+                                                    procéderons
+                                                    uniquement à l'encaissement du moyen de règlement que vous nous
+                                                    aurez
+                                                    indiqué.</p>
+                                            </li>
+                                            <li><b>Virements bancaires :</b>
+                                                <p>Non acceptés à moins de 10 jours (France) ou 15 jours (étranger)
+                                                    avant
+                                                    le
+                                                    départ.
+                                                    Précisez votre numéro de dossier dans le libellé du virement.
+                                                    Attention : Les frais de virement sont à votre charge. En cas de
+                                                    retard
+                                                    de
+                                                    réception, votre carte en garantie sera débitée automatiquement.</p>
+                                            </li>
+
+                                            <li><b>Paiement en agence :</b>
+
+                                                <p>Si vous avez réservé dans une agence physique, vous pouvez y
+                                                    effectuer
+                                                    le
+                                                    règlement directement.</p>
+                                            </li>
+
+                                            <li><b>American Express: </b>
+
+                                                <p>Pour les montants supérieurs à 2 000 €, Amex est
+                                                    accepté
+                                                    sans frais.
+                                                    Pour les montants inférieurs, des frais de 3% seront appliqués si
+                                                    vous
+                                                    souhaitez
+                                                </p>
+                                        </ul>
+                                        <b>Important :</b>
+
+                                        Toute modification du mode de paiement doit être communiquée au moins 40
+                                        jours
+                                        avant le départ.
+                                        Tout règlement engage votre responsabilité en tant que client.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Comment régler avec plusieurs cartes bancaires ?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideAfterTravel">
+                                    <div class="accordion-body">
+                                        Vous pouvez le faire directement sur notre site Internet, lors de votre
+                                        réservation, en cochant la case appropriée, intitulée « Par plusieurs cartes
+                                        bancaires », dans l’interface « Choisissez votre moyen de paiement ».
+
+                                        <br>Vous pouvez également le faire par téléphone, en contactant notre Service
+                                        facturation, au 0173190303. Ce Service est ouvert du lundi au samedi, de 10h à
+                                        18h, sans interruption.
+
+                                        <br>Nous acceptons jusqu’à 3 cartes bancaires.
+
+                                        <br>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                        ne
+                                        sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                        Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                        disposition par téléphone au numéro indiqué dans notre rubrique Nous contacter.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -612,14 +890,210 @@
                 </div>
                 <div id="PersonalData" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that
-                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
-                        limit
-                        overflow.
+                        <div class="accordion" id="accordionInsidePersonalData">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                        Dois-je me déplacer pour régler mon voyage ?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePersonalData">
+                                    <div class="accordion-body">
+                                        <p>Si vous souhaitez nous régler auprès de nos services directement, vous pouvez
+                                            vous rendre à notre siège.
+                                            L’Accueil physique de notre siège est ouvert <b>du lundi au vendredi de 9h à
+                                                19h et
+                                                le samedi de 10h à 19h</b>, sans interruption.
+                                            Vous pouvez venir régler par carte bleue, déposer vos chèques ou
+                                            chèques-vacances ANCV sur place.
+                                            Le montant maximum que nous prenons est de 1 000 € pour l’ensemble du
+                                            dossier.
+                                            Si vous avez réservé en agence, vous avez la possibilité de vous y déplacer.
+                                        </p>
+
+                                        <p>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                            ne
+                                            sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                            Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                            disposition par téléphone au numéro indiqué dans notre rubrique Nous
+                                            contacter.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Comment puis-je régler mon séjour ?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePersonalData">
+                                    <div class="accordion-body">
+                                        <p><b>Attention :</b> Si vous résidez à l'étranger ou dans les DOM-TOM, seules
+                                            les cartes
+                                            bleues françaises sont acceptées.</p>
+
+                                        <b>Moyens de paiement disponibles :</b>
+                                        <ul>
+                                            <li>1. Vous souhaitez réserver un séjour par carte bancaire :
+
+                                                Sur notre site sécurisé, vous pourrez renseignez votre numéro de carte
+                                                bancaire,
+                                                sa date d'expiration, le nom du porteur, et le cryptogramme afin de
+                                                valider
+                                                votre réservation.
+
+
+                                                Contactez un de nos conseillers afin qu'il puisse vous aider à finaliser
+                                                votre
+                                                projet. Vous retrouverez nos coordonnées téléphoniques directement sur
+                                                l'article
+                                                Nous appeler.
+                                            </li>
+
+                                            <li>2. Votre séjour est confirmé, vous souhaitez solder votre facture par
+                                                carte
+                                                bancaire :
+
+                                                Contactez notre Service Facturation au 0173190303, disponible du lundi
+                                                au samedi
+                                                de 10h à 18h sans interruption. Munissez-vous de votre numéro de dossier
+                                                (envoyé
+                                                dans le mail de confirmation). Il se compose de 10 caractères, qui sont
+                                                une
+                                                suite de chiffres ou de lettres et de chiffres. Veillez à bien vérifier
+                                                les
+                                                caractères précis (ex : chiffre « 0 » / lettre « O »)
+
+                                                Jusqu'à 3 cartes bancaires peuvent être utilisées. Nous acceptons les
+                                                cartes
+                                                françaises, suisses ou belges, y compris Visa (hors Electron) et
+                                                Eurocard/Mastercard
+
+                                                <b>Attention :</b> Certaines cartes bancaires délivrées en France, mais
+                                                rattachées à
+                                                des banques étrangères (ex. N26), peuvent ne pas être acceptées.
+                                            </li>
+                                        </ul>
+
+                                        <b>Autres moyens de paiement :</b>
+                                        <ul>
+                                            <li><b>Chèques bancaires ou postaux :</b>
+                                                <ul>
+                                                    <li>Non acceptés à moins de 30 jours du départ.</li>
+                                                    <li>Libellés à l'ordre de KARAVEL, avec votre numéro de dossier au
+                                                        dos.
+                                                    </li>
+                                                    <li>Envoyés à : Service Facturation KARAVEL, 17 rue de l’Échiquier
+                                                        75010
+                                                        PARIS.
+                                                    </li>
+                                                    <li><b>Cas particulier : les chèques Comité d'Entreprise</b> sont
+                                                        acceptés
+                                                        à moins
+                                                        de 30
+                                                        jours si le dossier est déjà soldé (un remboursement du
+                                                        trop-perçu sera
+                                                        effectué).
+                                                    </li>
+                                                </ul>
+
+                                                <p><b>Pour un paiement par chèques (bancaire ou postal),
+                                                        Chèques-vacances
+                                                        ANCV,
+                                                        espèce,</b> nous vous recommandons de consulter nos Conditions
+                                                    Générales de Vente
+                                                    (article 2.4) dans l'onglet "Paiement et factures" de votre Espace
+                                                    Client. Nos
+                                                    Conditions sont aussi accessibles en bas de la page d’accueil de
+                                                    notre
+                                                    site ou
+                                                    directement via ce lien.</p>
+
+
+                                                <p><b>A noter :</b> tout moyen de paiement nécessite obligatoirement la
+                                                    prise
+                                                    d’une carte
+                                                    bleue en garantie. À la confirmation de votre voyage, nous
+                                                    procéderons
+                                                    uniquement à l'encaissement du moyen de règlement que vous nous
+                                                    aurez
+                                                    indiqué.</p>
+                                            </li>
+                                            <li><b>Virements bancaires :</b>
+                                                <p>Non acceptés à moins de 10 jours (France) ou 15 jours (étranger)
+                                                    avant
+                                                    le
+                                                    départ.
+                                                    Précisez votre numéro de dossier dans le libellé du virement.
+                                                    Attention : Les frais de virement sont à votre charge. En cas de
+                                                    retard
+                                                    de
+                                                    réception, votre carte en garantie sera débitée automatiquement.</p>
+                                            </li>
+
+                                            <li><b>Paiement en agence :</b>
+
+                                                <p>Si vous avez réservé dans une agence physique, vous pouvez y
+                                                    effectuer
+                                                    le
+                                                    règlement directement.</p>
+                                            </li>
+
+                                            <li><b>American Express: </b>
+
+                                                <p>Pour les montants supérieurs à 2 000 €, Amex est
+                                                    accepté
+                                                    sans frais.
+                                                    Pour les montants inférieurs, des frais de 3% seront appliqués si
+                                                    vous
+                                                    souhaitez
+                                                </p>
+                                        </ul>
+                                        <b>Important :</b>
+
+                                        Toute modification du mode de paiement doit être communiquée au moins 40
+                                        jours
+                                        avant le départ.
+                                        Tout règlement engage votre responsabilité en tant que client.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Comment régler avec plusieurs cartes bancaires ?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsidePersonalData">
+                                    <div class="accordion-body">
+                                        Vous pouvez le faire directement sur notre site Internet, lors de votre
+                                        réservation, en cochant la case appropriée, intitulée « Par plusieurs cartes
+                                        bancaires », dans l’interface « Choisissez votre moyen de paiement ».
+
+                                        <br>Vous pouvez également le faire par téléphone, en contactant notre Service
+                                        facturation, au 0173190303. Ce Service est ouvert du lundi au samedi, de 10h à
+                                        18h, sans interruption.
+
+                                        <br>Nous acceptons jusqu’à 3 cartes bancaires.
+
+                                        <br>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                        ne
+                                        sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                        Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                        disposition par téléphone au numéro indiqué dans notre rubrique Nous contacter.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -632,14 +1106,210 @@
                 </div>
                 <div id="ContactUs" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                        collapse plugin adds the appropriate classes that we use to style each element. These classes
-                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
-                        that
-                        just about any HTML can go within the <code>.accordion-body</code>, though the transition does
-                        limit
-                        overflow.
+                        <div class="accordion" id="accordionInsideContactUs">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="false"
+                                            aria-controls="collapseOne">
+                                        Dois-je me déplacer pour régler mon voyage ?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideContactUs">
+                                    <div class="accordion-body">
+                                        <p>Si vous souhaitez nous régler auprès de nos services directement, vous pouvez
+                                            vous rendre à notre siège.
+                                            L’Accueil physique de notre siège est ouvert <b>du lundi au vendredi de 9h à
+                                                19h et
+                                                le samedi de 10h à 19h</b>, sans interruption.
+                                            Vous pouvez venir régler par carte bleue, déposer vos chèques ou
+                                            chèques-vacances ANCV sur place.
+                                            Le montant maximum que nous prenons est de 1 000 € pour l’ensemble du
+                                            dossier.
+                                            Si vous avez réservé en agence, vous avez la possibilité de vous y déplacer.
+                                        </p>
+
+                                        <p>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                            ne
+                                            sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                            Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                            disposition par téléphone au numéro indiqué dans notre rubrique Nous
+                                            contacter.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                        Comment puis-je régler mon séjour ?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideContactUs">
+                                    <div class="accordion-body">
+                                        <p><b>Attention :</b> Si vous résidez à l'étranger ou dans les DOM-TOM, seules
+                                            les cartes
+                                            bleues françaises sont acceptées.</p>
+
+                                        <b>Moyens de paiement disponibles :</b>
+                                        <ul>
+                                            <li>1. Vous souhaitez réserver un séjour par carte bancaire :
+
+                                                Sur notre site sécurisé, vous pourrez renseignez votre numéro de carte
+                                                bancaire,
+                                                sa date d'expiration, le nom du porteur, et le cryptogramme afin de
+                                                valider
+                                                votre réservation.
+
+
+                                                Contactez un de nos conseillers afin qu'il puisse vous aider à finaliser
+                                                votre
+                                                projet. Vous retrouverez nos coordonnées téléphoniques directement sur
+                                                l'article
+                                                Nous appeler.
+                                            </li>
+
+                                            <li>2. Votre séjour est confirmé, vous souhaitez solder votre facture par
+                                                carte
+                                                bancaire :
+
+                                                Contactez notre Service Facturation au 0173190303, disponible du lundi
+                                                au samedi
+                                                de 10h à 18h sans interruption. Munissez-vous de votre numéro de dossier
+                                                (envoyé
+                                                dans le mail de confirmation). Il se compose de 10 caractères, qui sont
+                                                une
+                                                suite de chiffres ou de lettres et de chiffres. Veillez à bien vérifier
+                                                les
+                                                caractères précis (ex : chiffre « 0 » / lettre « O »)
+
+                                                Jusqu'à 3 cartes bancaires peuvent être utilisées. Nous acceptons les
+                                                cartes
+                                                françaises, suisses ou belges, y compris Visa (hors Electron) et
+                                                Eurocard/Mastercard
+
+                                                <b>Attention :</b> Certaines cartes bancaires délivrées en France, mais
+                                                rattachées à
+                                                des banques étrangères (ex. N26), peuvent ne pas être acceptées.
+                                            </li>
+                                        </ul>
+
+                                        <b>Autres moyens de paiement :</b>
+                                        <ul>
+                                            <li><b>Chèques bancaires ou postaux :</b>
+                                                <ul>
+                                                    <li>Non acceptés à moins de 30 jours du départ.</li>
+                                                    <li>Libellés à l'ordre de KARAVEL, avec votre numéro de dossier au
+                                                        dos.
+                                                    </li>
+                                                    <li>Envoyés à : Service Facturation KARAVEL, 17 rue de l’Échiquier
+                                                        75010
+                                                        PARIS.
+                                                    </li>
+                                                    <li><b>Cas particulier : les chèques Comité d'Entreprise</b> sont
+                                                        acceptés
+                                                        à moins
+                                                        de 30
+                                                        jours si le dossier est déjà soldé (un remboursement du
+                                                        trop-perçu sera
+                                                        effectué).
+                                                    </li>
+                                                </ul>
+
+                                                <p><b>Pour un paiement par chèques (bancaire ou postal),
+                                                        Chèques-vacances
+                                                        ANCV,
+                                                        espèce,</b> nous vous recommandons de consulter nos Conditions
+                                                    Générales de Vente
+                                                    (article 2.4) dans l'onglet "Paiement et factures" de votre Espace
+                                                    Client. Nos
+                                                    Conditions sont aussi accessibles en bas de la page d’accueil de
+                                                    notre
+                                                    site ou
+                                                    directement via ce lien.</p>
+
+
+                                                <p><b>A noter :</b> tout moyen de paiement nécessite obligatoirement la
+                                                    prise
+                                                    d’une carte
+                                                    bleue en garantie. À la confirmation de votre voyage, nous
+                                                    procéderons
+                                                    uniquement à l'encaissement du moyen de règlement que vous nous
+                                                    aurez
+                                                    indiqué.</p>
+                                            </li>
+                                            <li><b>Virements bancaires :</b>
+                                                <p>Non acceptés à moins de 10 jours (France) ou 15 jours (étranger)
+                                                    avant
+                                                    le
+                                                    départ.
+                                                    Précisez votre numéro de dossier dans le libellé du virement.
+                                                    Attention : Les frais de virement sont à votre charge. En cas de
+                                                    retard
+                                                    de
+                                                    réception, votre carte en garantie sera débitée automatiquement.</p>
+                                            </li>
+
+                                            <li><b>Paiement en agence :</b>
+
+                                                <p>Si vous avez réservé dans une agence physique, vous pouvez y
+                                                    effectuer
+                                                    le
+                                                    règlement directement.</p>
+                                            </li>
+
+                                            <li><b>American Express: </b>
+
+                                                <p>Pour les montants supérieurs à 2 000 €, Amex est
+                                                    accepté
+                                                    sans frais.
+                                                    Pour les montants inférieurs, des frais de 3% seront appliqués si
+                                                    vous
+                                                    souhaitez
+                                                </p>
+                                        </ul>
+                                        <b>Important :</b>
+
+                                        Toute modification du mode de paiement doit être communiquée au moins 40
+                                        jours
+                                        avant le départ.
+                                        Tout règlement engage votre responsabilité en tant que client.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        Comment régler avec plusieurs cartes bancaires ?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionInsideContactUs">
+                                    <div class="accordion-body">
+                                        Vous pouvez le faire directement sur notre site Internet, lors de votre
+                                        réservation, en cochant la case appropriée, intitulée « Par plusieurs cartes
+                                        bancaires », dans l’interface « Choisissez votre moyen de paiement ».
+
+                                        <br>Vous pouvez également le faire par téléphone, en contactant notre Service
+                                        facturation, au 0173190303. Ce Service est ouvert du lundi au samedi, de 10h à
+                                        18h, sans interruption.
+
+                                        <br>Nous acceptons jusqu’à 3 cartes bancaires.
+
+                                        <br>Attention, notre service Accueil facturation est dédié à la facturation. Il
+                                        ne
+                                        sera pas en mesure de vous conseiller sur votre destination ou votre séjour.
+                                        Pour tout renseignement de ce type, nos conseillers voyages sont à votre
+                                        disposition par téléphone au numéro indiqué dans notre rubrique Nous contacter.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
