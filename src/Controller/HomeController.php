@@ -22,10 +22,10 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/About_Us', name: 'app_About_Us')]
+    #[Route('/AboutUs', name: 'app_About_Us')]
     public function aboutUs(): Response
     {
-        return $this->render('home/FAQ.html.twig', [
+        return $this->render('home/aboutUs.html.twig', [
         ]);
     }
 }
