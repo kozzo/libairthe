@@ -1,9 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} hello {% endblock %}
+{% block title %} About Us {% endblock %}
 
 {% block content %}
+	<div style="position: relative; width: 100%;">
+		<img src="{{ asset('/images/paradisiaque.png') }}" alt="Avion" style="width: 100%; height: auto;">
+		<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: xxx-large; font-weight: bold; text-align: center;">
+			<h1><b>Petits prix, grandes vacances</b></h1>
+		</div>
+	</div>
+	<div class="align-content-center" style="margin-top: 3%;">
+		<div class="row">
+			<div class="col-1" style=" margin-left: auto; margin-right: auto;">
+				<img src="{{ asset('/images/avion.png') }}" class="rounded-circle" style="width: 400px; height: 270px;" alt="Avion">
+			</div>
+			<div class="col-6" style=" margin-left: auto; margin-right: auto;">
+				<p>Lib-Air-Thé est l’un des leaders français de la vente de séjours sur internet.
+					Créée en 1998, la marque a depuis fait voyager plusieurs millions de personnes,
+					grâce à ses prix compétitifs et sa promesse renouvelée « Petits prix, Grandes vacances ! ».
+				</p>
 
-	{# CHANGE THE CONTENT AS YOU NEED #}
+				<ul>
+					<li>Nos clients peuvent réserver sur notre <b>site internet</b>, <b>par téléphone</b>
+						(auprès de l’un de nos conseillers voyages) ou commencer sur le site
+						et finir par téléphone ou en agence (ou l’inverse, c’est vous qui voyez !).
+						<br>
+					</li>
+
+					<li>A la différence d’un énième site de voyages revendant des produits fabriqués par d’autres,
+						Lib-Air-Thé connait sur le bout des doigts le métier de Tour opérateur.
+						Le groupe comprend un département Production d’une centaine de personnes,
+						négociant directement avec les hôteliers et les compagnies aériennes pour vous <b>garantir du choix
+						et surtout les meilleurs prix, même en haute saison.</b>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="align-content-center" style="margin-top: 5%;">
+		<div class="row" style="margin-left: 7%">
+			<div class="col-6" style=" margin-left: auto; margin-right: auto;">
+				<ul>
+					<li>Lib-Air-Thé, c’est aussi l’une des offres les plus étoffées du marché en matière de package dynamique.
+						<b>En clair, nous vous offrons sur la plupart de nos offres la possibilité de personnaliser votre séjour,</b>
+						en choisissant votre jour de départ, l’aéroport le plus près de chez vous ou la compagnie aérienne qui vous convient le mieux,
+						et bien d’autres choses encore !
+						<br>
+					</li>
+
+					<li>Lib-Air-Thé est une des <b>marques phares du groupe Karavel,</b> créé sur les campus de Harvard et du MIT.
+						Les cofondateurs restent toujours aux commandes du groupe.
+					</li>
+				</ul>
+			</div>
+			<div class="col-4" style=" margin-left: auto; margin-right: auto;">
+				<img src="{{ asset('/images/valise.png') }}" class="rounded-circle" style="width: 400px; height: 270px;" alt="Valise">
+			</div>
+		</div>
+	</div>
 
 {% endblock %}
