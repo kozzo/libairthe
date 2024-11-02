@@ -1,0 +1,10 @@
+<div class="card destination-card">
+
+    <div class="card-body">
+        <h5 class="card-title">{{ child.label }}</h5>
+    </div>
+
+    <div class="card-footer d-flex m-auto">
+        <a href="{{ path('app_destination_travels', {'id': child.id}) }}" class="btn btn-primary">Voir les voyages</a>
+    </div>
+</div>
