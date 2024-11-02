@@ -1,13 +1,10 @@
 <div class="card travel-card">
-    <a href="{# {{ path('app_category_page', {'slug': child.slug}) }} #}">
-        <img src="{# public/images/{{ child.name }} #}" class="card-img-top" alt="{{ child.label }}">
-    </a>
 
     <div class="card-body">
         <h5 class="card-title">{{ child.label }}</h5>
     </div>
 
     <div class="card-footer d-flex m-auto">
-        <a href="{{ path('app_category_travels', {'id': child.id}) }}" class="btn btn-primary">Voir les produits</a>
+        <a href="{{ path('app_category_travels', {'id': child.id}) }}" class="btn btn-primary">Voir les voyages</a>
     </div>
 </div>

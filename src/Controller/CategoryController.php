@@ -31,8 +31,8 @@ class CategoryController extends AbstractController
         $categoryTravels = $categoryRepository->find($id)->getTravels();
         $category = $categoryRepository->find($id);
 
-        return $this->render('category/travles.html.twig', [
-            'categoryProducts' => $categoryTravels,
+        return $this->render('category/travels.html.twig', [
+            'categoryTravels' => $categoryTravels,
             'category' => $category,
         ]);
     }
