@@ -48,40 +48,19 @@ final class TravelController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_travel_page', methods: ['GET'])]
-    public function show(Travel $travel): Response
+    #[Route('/{slug}', name: 'app_travel_page', methods: ['GET'])]
+    public function show(TravelRepository $travelRepository, string $slug): Response
     {
+        $travel = $travelRepository->findOneBy(['slug' => $slug]);
+
+        if (!$travel) {
+            throw $this->createNotFoundException('Travel page not found');
+        }
+
         return $this->render('travel/show.html.twig', [
             'travel' => $travel,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_travel_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Travel $travel, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(TravelType::class, $travel);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_travel_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('travel/edit.html.twig', [
-            'travel' => $travel,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_travel_delete', methods: ['POST'])]
-    public function delete(Request $request, Travel $travel, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$travel->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($travel);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_travel_index', [], Response::HTTP_SEE_OTHER);
-    }
 }
