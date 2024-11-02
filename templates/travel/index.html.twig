@@ -2,60 +2,18 @@
 
 {% block title %}Travel index{% endblock %}
 
-{% block body %}
-    <h1>Travel index</h1>
+{% block content %}
+    <div class="m-5">
+        <h1 class="pt-5">Voyages</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Slug</th>
-                <th>Label</th>
-                <th>AdultUnitPrice</th>
-                <th>ChildUnitPrice</th>
-                <th>TotalSeats</th>
-                <th>AvailableSeats</th>
-                <th>Note</th>
-                <th>DailySeats</th>
-                <th>DeparturePlace</th>
-                <th>ArrivingPlace</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>DeletedAt</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for travel in travel %}
-            <tr>
-                <td>{{ travel.id }}</td>
-                <td>{{ travel.slug }}</td>
-                <td>{{ travel.label }}</td>
-                <td>{{ travel.adultUnitPrice }}</td>
-                <td>{{ travel.childUnitPrice }}</td>
-                <td>{{ travel.totalSeats }}</td>
-                <td>{{ travel.availableSeats }}</td>
-                <td>{{ travel.note }}</td>
-                <td>{{ travel.dailySeats }}</td>
-                <td>{{ travel.departurePlace }}</td>
-                <td>{{ travel.arrivingPlace }}</td>
-                <td>{{ travel.createdAt ? travel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ travel.updatedAt ? travel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ travel.deletedAt ? travel.deletedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ travel.description }}</td>
-                <td>
-                    <a href="{{ path('app_travel_show', {'id': travel.id}) }}">show</a>
-                    <a href="{{ path('app_travel_edit', {'id': travel.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="16">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row row-cols-sm-1 row-cols-lg-2">
+            {% for child in catalog %}
+                <div class="col mb-4">
+                    {{ include('travel/_partials/travel-card.html.twig') }}
+                </div>
+            {% endfor %}
+        </div>
 
-    <a href="{{ path('app_travel_new') }}">Create new</a>
+    </div>
+
 {% endblock %}

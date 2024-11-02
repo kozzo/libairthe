@@ -14,13 +14,19 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/travel')]
 final class TravelController extends AbstractController
 {
-    #[Route(name: 'app_travel_index', methods: ['GET'])]
+
+    #[Route('/', name: 'app_travel')]
     public function index(TravelRepository $travelRepository): Response
     {
+        $catalog = $travelRepository->findAll();
+
         return $this->render('travel/index.html.twig', [
-            'travel' => $travelRepository->findAll(),
+            'controller_name' => 'TravelController',
+            'catalog' => $catalog,
         ]);
+
     }
+
 
     #[Route('/new', name: 'app_travel_add', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
