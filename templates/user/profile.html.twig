@@ -15,26 +15,37 @@
 						<li class="list-group-item"> Nom : {{ user.lastName }} </li>
 						<li class="list-group-item"> Email : {{ user.email }} </li>
 						<li class="list-group-item"> Compte créé le {{ user.createdAt|date("d/m/Y") }} </li>
-						<li class="list-group-item"> Vos point d'expérience : {{ user.experiencePoints }} </li>
-						Votre adresse :
-						<li class="list-group-item fw-bold text-danger">
-							{{ dump(user) }}
+						<li class="list-group-item"> Vos points d'expérience : {{ user.experiencePoints }} </li>
+						<div class="card-body">
+							{% if user.addresses.count <= 1 %}
+								Votre adresse :
+							{% else %}
+								Vos adresses :
+							{% endif %}
+
 							{% if user.addresses is not empty %}
 								{% for address in user.addresses %}
-									address
+										<div class="d-flex justify-content-center align-items-center p-2">
+											{{ address }}
+											<form method="post" action="{{ path('app_user_address_delete', {'slug': address.slug}) }}"
+											      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette adresse ?');">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ address.slug) }}">
+												<button class="btn btn-sm btn-danger">Supprimer l'adresse</button>
+											</form>
+										</div>
 								{% endfor %}
+
 							{% else %}
 								Vous n'avez aucune adresse par défaut.
 							{% endif %}
-							TODO : intégrer address.tostring
-						</li>
+						</div>
 					</ul>
 				</div>
-				<a href="#" class="btn btn-primary fw-bold text-danger">Modifier vos informations (TODO)</a>
+				<div class="card-footer text-body-secondary">
+					<a href="{{ path('app_user_add_address') }}" class="btn btn-primary fw-bold">Ajouter une adresse</a>
+				</div>
 			</div>
-			<div class="card-footer text-body-secondary">
-				<a href="{{ path('app_user_add_address') }}" class="btn btn-primary fw-bold">Ajouter une adresse</a>
-			</div>
+			<a href="{{ path('app_user_crud_edit', {'slug': user.slug}) }}" class="btn btn-primary fw-bold">Modifier vos informations</a>
 		</div>
 	</div>
 {% endblock %}

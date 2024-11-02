@@ -26,3 +26,5 @@
 ###< symfony/asset-mapper ###
 .env
 !/.env
+/.idea/phpspec.xml
+/.idea/codeception.xml

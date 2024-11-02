@@ -243,8 +243,16 @@ class Address
 
     public function __toString(): string
     {
-        return
-            $this->getStreet() . ' ' . $this->getZipCode() . ' ' . $this->getCity() . ' ' . $this->getCountry(). ' \n'.
-            $this->getFirstName() . ' ' . $this->getLastName(). ' ' . $this->getPhone();
+	    return sprintf(
+		    '%s %s, %s, %s, %s %s, %s',
+		    $this->firstName,
+		    $this->lastName,
+		    $this->street,
+		    $this->city,
+		    $this->zipCode,
+		    $this->country,
+		    $this->phone
+	    );
+
     }
 }
