@@ -30,6 +30,21 @@ class UserController extends AbstractController
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
+
+            /////
+            ///
+            ///         $slugStreet = $this->slugger->slug($entity->getStreet());
+            //        $slugCity = $this->slugger->slug($entity->getCity());
+            //        $slugCountry = $this->slugger->slug($entity->getCountry());
+            //
+            //        $slug = $this->slugger->slug(
+            //            $entity->getZipCode().'-'.
+            //                $slugStreet.'-'.
+            //                $slugCity.'-'.
+            //                $slugCountry
+            //        );
+            //        $entity->setSlug(strtolower($slug));
+            /// /////
 			$address->setSlug($address->getZipCode().'-'.$address->getStreet().'-'.$address->getCity());
 
 			$address->setCreatedAt(new \DateTimeImmutable());

@@ -39,7 +39,7 @@ class RegistrationController extends AbstractController
 
             $user->setSlug($user->getFirstName().'-'.$user->getLastName());
 
-            $user->setRoles(['ROLE_USER','ROLE_ADMIN']);
+            $user->setRoles(['ROLE_USER']);
             $user->setCreatedAt(new \DateTimeImmutable());
             $user->setUpdatedAt(new \DateTimeImmutable());
 

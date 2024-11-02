@@ -90,7 +90,8 @@ class AddressCrudController extends AbstractCrudController implements EventSubsc
             $entityInstance->getZipCode().'-'.
             $slugStreet.'-'.
             $slugCity.'-'.
-            $slugCountry
+            $slugCountry.'-'.
+            uniqid()
         ));
         parent::updateEntity($entityManager, $entityInstance);
     }
