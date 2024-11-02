@@ -64,8 +64,9 @@
 		private function applyBudgetFilter(QueryBuilder $qb, ?float $maxBudget, int $adults, int $children): void
 		{
 			if ($maxBudget !== null && ($adults > 0 || $children > 0)) {
-				$qb->andWhere('(:totalPrice) <= :maxBudget')
-					->setParameter('totalPrice', ($adults * 't.adultUnitPrice') + ($children * 't.childUnitPrice'))
+				$qb->andWhere('(:adults * t.adultUnitPrice + :children * t.childUnitPrice) <= :maxBudget')
+					->setParameter('adults', $adults)
+					->setParameter('children', $children)
 					->setParameter('maxBudget', $maxBudget);
 			}
 		}
