@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Address;
 use App\Entity\User;
 use App\Form\AddressType;
+use App\Form\UserFormType;
 use App\Form\UserType;
 use App\Repository\AddressRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -72,7 +73,7 @@ class UserController extends AbstractController
 	public function edit(Request $request, EntityManagerInterface $entityManager): Response
 	{
 		$user = $this->getUser();
-		$form = $this->createForm(UserType::class, $user);
+		$form = $this->createForm(UserFormType::class, $user);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
