@@ -1,41 +1,30 @@
 {% block body %}
 
-	<div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-		<div class="dropdown">
-			<a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-				<svg class="bi me-2" width="40" height="32">
-					<use xlink:href="#bootstrap"></use>
-				</svg>
-			</a>
-			<ul class="dropdown-menu text-small shadow">
-				<li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-				<li><a class="dropdown-item" href="#">Inventory</a></li>
-				<li><a class="dropdown-item" href="#">Customers</a></li>
-				<li><a class="dropdown-item" href="#">Products</a></li>
-				<li>
-					<hr class="dropdown-divider">
-				</li>
-				<li><a class="dropdown-item" href="#">Reports</a></li>
-				<li><a class="dropdown-item" href="#">Analytics</a></li>
-			</ul>
-		</div>
+	<div class="d-flex">
+		<form class="w-100 d-flex flex-wrap align-items-center" role="search" method="get" action="{{ path('travel_search') }}">
 
-		<div class="d-flex align-items-center">
-			<form class="w-100 me-3" role="search">
-				<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-			</form>
+			<select name="category" class="form-control mb-2" aria-label="Category">
+				<option value="">Catégorie</option>
+				{% for category in get_all_categories() %}
+					<option value="{{ category.id }}">{{ category.label }}</option>
+				{% endfor %}
+			</select>
 
-		</div>
+			<input type="text" name="keyword" class="form-control me-2 mb-2" placeholder="Mot-clé..." aria-label="Keyword" style="width: auto;">
+
+			<input type="date" name="date" class="form-control me-2 mb-2" placeholder="Date de voyage" aria-label="Date" style="width: auto;">
+
+			<input type="number" name="minRating" class="form-control me-2 mb-2" placeholder="Note minimale" aria-label="Minimum Rating" min="0" max="5" style="width: auto;">
+
+			<input type="number" name="maxBudget" class="form-control me-2 mb-2" placeholder="Budget maximum" aria-label="Max Budget" min="0" style="width: auto;">
+
+			<input type="number" name="adults" class="form-control me-2 mb-2" placeholder="Nombre d'adultes" aria-label="Adults" min="0" style="width: auto;">
+
+			<input type="number" name="children" class="form-control me-2 mb-2" placeholder="Nombre d'enfants" aria-label="Children" min="0" style="width: auto;">
+
+			<button type="submit" class="btn btn-primary mb-2" style="width: auto;">Rechercher</button>
+		</form>
 	</div>
-	<div class="container-fluid pb-3">
-		<div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
-			<div class="bg-body-tertiary border rounded-3">
-				<br><br><br><br><br><br><br><br><br><br>
-			</div>
-			<div class="bg-body-tertiary border rounded-3">
-				<br><br><br><br><br><br><br><br><br><br>
-			</div>
-		</div>
-	</div>
+
 
 {% endblock %}

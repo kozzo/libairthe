@@ -7,6 +7,12 @@ parameters:
 
 services:
     # default configuration for services in *this* file
+    App\Service\CategoryService:
+        public: true
+        arguments:
+            $categoryService: '@App\Service\CategoryService'
+        tags: [ 'twig.service' ]
+
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.

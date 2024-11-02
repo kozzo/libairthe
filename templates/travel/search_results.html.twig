@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la recherche{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Résultats de la recherche</h1>
+
+        {% if travels is empty %}
+            <p>Aucun voyage ne correspond à votre recherche.</p>
+        {% else %}
+            <div class="row">
+                {% for travel in travels %}
+                    <div class="col-md-4 mb-4">
+                        {% include 'travel/_partials/travel-card.html.twig' with { 'child': travel } %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

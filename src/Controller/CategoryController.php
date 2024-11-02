@@ -22,7 +22,6 @@ class CategoryController extends AbstractController
             'controller_name' => 'CategoryController',
             'catalog' => $catalog,
         ]);
-
     }
 
     #[Route('/{id}', name: 'app_category_travels')]
