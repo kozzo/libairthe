@@ -99,10 +99,12 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                 ->setCurrency('EUR'),
             NumberField::new('totalSeats'),
             NumberField::new('availableSeats'),
-            NumberField::new('dailySeats'),
+            NumberField::new('dailySeats')
+                ->hideOnIndex(),
             IntegerField::new('note')
 	            ->hideOnForm(),
             TextField::new('description')
+                ->hideOnIndex()
                 ->setFormTypeOptions([
                     'constraints' => [
                         new Regex([
@@ -112,6 +114,7 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                     ],
                 ]),
             TextField::new('departurePlace')
+                ->setLabel('Departure')
                 ->setFormTypeOptions([
                     'constraints' => [
                         new Regex([
@@ -121,11 +124,22 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                     ],
                 ]),
             TextField::new('arrivingPlace')
+                ->setLabel('Arriving')
+                ->hideOnIndex()
                 ->setFormTypeOptions([
                     'constraints' => [
                         new Regex([
                             'pattern' => '/^[A-Za-zÀ-ÖØ-öø-ÿ0-9%()\' ]{2,}+$/',
                             'message' => 'Needs at least 2 characters.'
+                        ]),
+                    ],
+                ]),
+            AssociationField::new('destination', 'Destination')
+                ->setCrudController(DestinationCrudController::class)
+                ->setFormTypeOptions([
+                    'constraints' => [
+                        new NotNull([
+                            'message' => 'Please select a destination.',
                         ]),
                     ],
                 ]),
@@ -137,15 +151,6 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                         new Count([
                             'min' => 1,
                             'minMessage' => 'Please select at least one category.',
-                        ]),
-                    ],
-                ]),
-            AssociationField::new('destination', 'Destination')
-                ->setCrudController(DestinationCrudController::class)
-                ->setFormTypeOptions([
-                    'constraints' => [
-                        new NotNull([
-                            'message' => 'Please select a destination.',
                         ]),
                     ],
                 ]),
@@ -161,9 +166,11 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                 ]),
 
             DateField::new('createdAt')
-                ->hideOnForm(),
+                ->hideOnForm()
+                ->hideOnIndex(),
 	        DateField::new('periodStart'),
-	        DateField::new('periodEnd')
+	        DateField::new('periodEnd'),
+	        TextField::new('path', 'photo')
         ];
     }
 }
