@@ -2,6 +2,9 @@
 
     <div class="card-body">
         <h5 class="card-title">{{ child.label }}</h5>
+        <div>
+            <img class="img-fluid" src="{{ asset('images/destinations/' ~ child.path) }}" alt="image de {{ child.label }}">
+        </div>
     </div>
 
     <div class="card-footer d-flex m-auto">

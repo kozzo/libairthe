@@ -30,6 +30,9 @@ class Destination
     #[ORM\OneToMany(targetEntity: Travel::class, mappedBy: 'destination')]
     private Collection $travels;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $path = null;
+
     public function __construct()
     {
         $this->travels = new ArrayCollection();
@@ -107,6 +110,18 @@ class Destination
                 $travel->setDestination(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(?string $path): static
+    {
+        $this->path = $path;
 
         return $this;
     }
