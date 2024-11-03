@@ -4,17 +4,19 @@
 
 {% block content %}
     <div class="m-3">
-        <h1 class="pt-5">Voyages de la catégorie {{ category.label }}</h1>
+        <h1 class="pt-5 text-center">Voyages de la catégorie {{ category.label }}</h1>
         <div class="m-5">
-            <div class="row row-cols-sm-1 row-cols-lg-2">
-                {% for child in categoryTravels %}
-                    <div class="col mb-2">
-                        {{ include('travel/_partials/travel-card.html.twig') }}
-                    </div>
-                {% endfor %}
-            </div>
+            {% if categoryTravels is not empty %}
+                <div class="row {% if categoryTravels|length == 1 %}justify-content-center{% else %}row-cols-2{% endif %}">
+                    {% for child in categoryTravels %}
+                        <div class="col mb-2 {% if categoryTravels|length == 1 %}col-md-6 col-lg-12{% endif %}">
+                            {{ include('travel/_partials/travel-card.html.twig') }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-center py-5">Revenez plus tard, il n'y a actuellement aucun voyage disponible pour cette catégorie.</p>
+            {% endif %}
         </div>
     </div>
-
-
 {% endblock %}
