@@ -100,7 +100,7 @@
 				{% block content %}{% endblock %}
 			</div>
 
-			{% if app.user.isSubscribedToNewsletter != true %}
+			{% if not app.user or app.user.isSubscribedToNewsletter != true %}
 				<div class="container m-0 p-0 mb-4 d-flex flex-wrap align-items-center justify-content-center width-100">
 					<div class="card p-3 shadow-lg col-md-5 mt-5 mb-3">
 						<form action="/newsletter/subscribe" method="POST">
