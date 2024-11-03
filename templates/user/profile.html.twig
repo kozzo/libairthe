@@ -61,18 +61,26 @@
 				{% if user.reservations is not empty %}
 					{% for reservation in user.reservations %}
 						<div class="d-flex justify-content-around align-items-center p-2">
-							<p>Date : {{ reservation.departureDate |date("d/m/Y")  }}</p>
+							<p>Date : {{ reservation.departureDate | date("d/m/Y") }}</p>
 							<p>Départ : {{ reservation.travel.departurePlace }}</p>
 							<p>Arrivée : {{ reservation.travel.arrivingPlace }}</p>
 							<a class="btn btn-success" href="{{ path('app_reservation_summary', {'slug': reservation.slug}) }}">Voir la réservation</a>
+
+							{% if reservation.departureDate <= "now"|date_modify("+1 day") %}
+								{% if reservation.review is not null and reservation.review.client.slug == user.slug %}
+									<button class="btn btn-secondary" disabled>Merci pour votre avis</button>
+								{% else %}
+									<a href="{{ path('app_review_new', { 'slug': reservation.slug }) }}" class="btn btn-primary">Donner une note</a>
+								{% endif %}
+							{% endif %}
 							<hr>
 						</div>
 					{% endfor %}
-
 				{% else %}
-					Vous n'avez fait aucune réservation.
+					<p>Aucune réservation trouvée.</p>
 				{% endif %}
 			</div>
+
 		</div>
 	</div>
 {% endblock %}
