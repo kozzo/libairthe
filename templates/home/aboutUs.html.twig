@@ -4,7 +4,10 @@
 
 {% block content %}
 	<div style="position: relative; width: 100%;">
-		<img src="{{ asset('/images/paradisiaque.png') }}" alt="Avion" style="width: 100%; height: auto;">
+		<img src="{{ asset('/images/paradisiaque.png') }}"
+			 alt="Image paradisiaque"
+			 aria-label="Image paradisiaque"
+			 style="width: 100%; height: auto;">
 		<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: xxx-large; font-weight: bold; text-align: center;">
 			<h1><b>Petits prix, grandes vacances</b></h1>
 		</div>
@@ -12,7 +15,11 @@
 	<div class="align-content-center" style="margin-top: 3%;">
 		<div class="row">
 			<div class="col-1" style=" margin-left: auto; margin-right: auto;">
-				<img src="{{ asset('/images/avion.png') }}" class="rounded-circle" style="width: 400px; height: 270px;" alt="Avion">
+				<img class="rounded-circle"
+					 src="{{ asset('/images/avion.png') }}"
+					 alt="Image d'avion"
+					 aria-label="Image d'avion"
+					 style="width: 400px; height: 270px;">
 			</div>
 			<div class="col-6" style=" margin-left: auto; margin-right: auto;">
 				<p>Lib-Air-Thé est l’un des leaders français de la vente de séjours sur internet.
@@ -54,7 +61,11 @@
 				</ul>
 			</div>
 			<div class="col-4" style=" margin-left: auto; margin-right: auto;">
-				<img src="{{ asset('/images/valise.png') }}" class="rounded-circle" style="width: 400px; height: 270px;" alt="Valise">
+				<img class="rounded-circle"
+					 src="{{ asset('/images/valise.png') }}"
+					 alt="Image de valise"
+					 aria-label="Image de valise"
+					 style="width: 400px; height: 270px;">
 			</div>
 		</div>
 	</div>
