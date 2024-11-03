@@ -3,7 +3,7 @@
 
 {% block content %}
 	{% set user = app.user %}
-	<div class="width-100 container d-flex justify-content-center align-items-center">
+	<div class="width-100 container d-flex flex-column justify-content-center align-items-center">
 		<div class="card text-center shadow-lg m-4 mt-5 col-5">
 			<div class="card-header fw-bold fs-5">
 				Vos informations personnelles
@@ -53,11 +53,12 @@
 			<div class="card-body">
 				{% if user.reservations is not empty %}
 					{% for reservation in user.reservations %}
-						<div class="d-flex justify-content-center align-items-center p-2">
-							{{ reservation.reference }}
-							{{ reservation.travel.departurePlace }}
-							{{ reservation.travel.arrivingPlace }}
+						<div class="d-flex justify-content-around align-items-center p-2">
+							<p>Date : {{ reservation.departureDate |date("d/m/Y")  }}</p>
+							<p>Départ : {{ reservation.travel.departurePlace }}</p>
+							<p>Arrivée : {{ reservation.travel.arrivingPlace }}</p>
 							<a class="btn btn-success" href="{{ path('app_reservation_summary', {'slug': reservation.slug}) }}">Voir la réservation</a>
+							<hr>
 						</div>
 					{% endfor %}
 
