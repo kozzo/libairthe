@@ -19,18 +19,24 @@
 
 		{% block body %}
 
+			{% for message in app.session.flashBag.get('error') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+
 			<div class="container m-0 design-blue width-100">
 				<header class="m-0 py-3 width-100">
 					<nav class="navbar navbar-expand-md navbar-light">
 						<div class="container-fluid">
 							<a href="/" class="navbar-brand d-inline-block" style="width: auto;">
 								<img src="{{ asset('images/LOGO_LIBAIRTHE_BLANC.png') }}" alt="Logo liberté"
-									 style="height: 100px;">
+								     style="height: 100px;">
 							</a>
 							<p class="d-none d-sm-block d-md-none d-lg-block text-white fs-1 m-1">LIB-AIR-THÉ</p>
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-									data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-									aria-label="Toggle navigation">
+							        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+							        aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
 							<div class="collapse navbar-collapse" id="navbarNav">
@@ -51,14 +57,20 @@
 											   class="btn btn-success ms-1">Accès Admin</a>
 										</li>
 										<li class="nav-item d-md-none">
-											<a href="{{ path('admin') }}" class="nav-link text-white fs-4">Accès Admin</a>
+											<a href="{{ path('admin') }}" class="nav-link text-white fs-4">Accès
+											                                                               Admin</a>
 										</li>
 										<li class="nav-item d-md-block d-none">
 											<a href="{{ path('app_user_profile') }}"
-											   class="btn btn-primary design-dark-blue ms-1">Mon Espace ({{ app.user.firstName }})</a>
+											   class="btn btn-primary design-dark-blue ms-1">Mon Espace
+											                                                 ({{ app.user.firstName }}
+											                                                 )</a>
 										</li>
 										<li class="nav-item d-md-none">
-											<a href="{{ path('app_user_profile') }}" class="nav-link text-white fs-4">Mon Espace ({{ app.user.firstName }})</a>
+											<a href="{{ path('app_user_profile') }}" class="nav-link text-white fs-4">Mon
+											                                                                          Espace
+											                                                                          ({{ app.user.firstName }}
+											                                                                          )</a>
 
 										</li>
 										<li class="nav-item d-md-block d-none">
@@ -70,11 +82,12 @@
 										</li>
 									{% else %}
 										<li class="nav-item d-md-none">
-											<a href="{{ path('app_login') }}" class="nav-link text-white fs-4">Se connecter</a>
+											<a href="{{ path('app_login') }}" class="nav-link text-white fs-4">Se
+											                                                                   connecter</a>
 										</li>
 										<li class="nav-item d-md-block d-none">
 											<a href="{{ path('app_login') }}" class="btn btn-success design-green mx-2">Se
-												connecter</a>
+											                                                                            connecter</a>
 										</li>
 										<li class="nav-item d-md-none">
 											<a href="{{ path('app_register') }}" class="nav-link text-white fs-4">S'inscrire</a>
@@ -91,6 +104,8 @@
 			</div>
 			<div class="container-fluid design-blue-green py-2 mb-3">
 				<div id="navLinks" class="d-flex justify-content-start">
+					<a href="{{ path('app_home') }}" class="nav-link px-3 text-white fs-5">Accueil</a>
+					<span class="text-white">|</span>
 					<a href="{{ path('app_category') }}" class="nav-link px-3 text-white fs-5">Catégories</a>
 					<span class="text-white">|</span>
 					<a href="{{ path('app_travel') }}" class="nav-link px-3 text-white fs-5">Voyages</a>

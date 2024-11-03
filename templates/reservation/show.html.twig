@@ -3,44 +3,49 @@
 {% block title %}Reservation{% endblock %}
 
 {% block content %}
-    <h1>Reservation</h1>
 
-    <div class="container d-flex flex-column align-items-center justify-content-center mb-5">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Reference</th>
-                    <td>{{ reservation.reference }}</td>
-                </tr>
-                <tr>
-                    <th>AdultTraveler</th>
-                    <td>{{ reservation.adultTraveler }}</td>
-                </tr>
-                <tr>
-                    <th>ChildTraveler</th>
-                    <td>{{ reservation.childTraveler }}</td>
-                </tr>
-                <tr>
-                    <th>TotalPrice</th>
-                    <td>{{ reservation.totalPrice }}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>{{ reservation.status }}</td>
-                </tr>
-                <tr>
-                    <th>CreatedAt</th>
-                    <td>{{ reservation.createdAt ? reservation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                </tr>
-                <tr>
-                    <th>DepartureDate</th>
-                    <td>{{ reservation.departureDate ? reservation.departureDate|date('Y-m-d H:i:s') : '' }}</td>
-                </tr>
-            </tbody>
-        </table>
+	<h1>Reservation</h1>
 
-        <a href="{{ path('app_user_profile') }}">Retour au profil</a>
-    </div>
+	<div class="container d-flex flex-column align-items-center justify-content-center mb-5">
+
+		<img class="img-fluid rounded" src="{{ asset('/images/travels/' ~ reservation.travel.path) }}" alt="image de {{ reservation.travel.label }}" style="max-height: 200px; object-fit: cover; width: 100%;">
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Reference de réservation</th>
+					<td>{{ reservation.reference }}</td>
+				</tr>
+				<tr>
+					<th>Nombre de passagers adultes</th>
+					<td>{{ reservation.adultTraveler }}</td>
+				</tr>
+				<tr>
+					<th>Nombre de passagers enfants</th>
+					<td>{{ reservation.childTraveler }}</td>
+				</tr>
+				<tr>
+					<th>Prix total</th>
+					<td>{{ (reservation.totalPrice /100) }} €</td>
+				</tr>
+				<tr>
+					<th>Status</th>
+					<td>{{ reservation.status }}</td>
+				</tr>
+				<tr>
+					<th>Date de réservation</th>
+					<td>{{ reservation.createdAt ? reservation.createdAt|date('d-m-Y') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Date de départ</th>
+					<td>{{ reservation.departureDate ? reservation.departureDate|date('d-m-Y') : '' }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<a href="{{ path('app_user_profile') }}">Retour au profil</a>
+	</div>
 
 
 {% endblock %}

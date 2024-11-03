@@ -19,9 +19,11 @@ class TravelController extends AbstractController
 {
 
     private $reservationService;
+	private $entityManager;
 
-    public function __construct(TravelSearchService $travelSearchService) {
+	public function __construct(TravelSearchService $travelSearchService, EntityManagerInterface $entityManager) {
         $this->travelSearchService = $travelSearchService;
+		$this->entityManager = $entityManager;
     }
 
     #[Route('/', name: 'app_travel')]
@@ -58,8 +60,10 @@ class TravelController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_travel_page', methods: ['GET'])]
-    public function show(Travel $travel): Response
+    public function show(string $slug): Response
     {
+	    $travel = $this->entityManager->getRepository(Travel::class)->findOneBy(['slug' => $slug]);
+
         return $this->render('travel/show.html.twig', [
             'travel' => $travel,
         ]);
