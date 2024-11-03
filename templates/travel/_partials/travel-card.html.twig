@@ -1,17 +1,20 @@
 <div class="card travel-card">
 
-    <div class="card-body">
-        <h5 class="card-title">{{ child.label }}</h5>
-        <p class="card-text">
-            {{ child.destination }} <br>à partir de {{ child.childUnitPrice }} €
-        </p>
-        <a href="{{ path('app_reservation_new', { 'slug': child.slug}) }}" class="btn btn-primary">Réserver</a>
-    </div>
+	<div class="card-body">
+		<h5 class="card-title">{{ child.label }}</h5>
+		<div class="mb-3">
+			<img class="img-fluid rounded" src="{{ asset('images/travels/' ~ child.path) }}" alt="image de {{ child.label }}" style="max-height: 200px; object-fit: cover; width: 100%;">
+		</div>
+		<p class="card-text">
+			{{ child.destination }} <br>à partir de {{ child.childUnitPrice }} €
+		</p>
+		<a href="{{ path('app_reservation_new', { 'slug': child.slug}) }}" class="btn btn-primary btn-block">Réserver</a>
+	</div>
 
-    <div class="card-footer d-flex justify-content-between">
-        <a href="{{ path('app_travel_page', {'slug': child.slug}) }}" class="btn btn-primary">Voir le voyage</a>
-{#        <form action="{{ path('app_cart_add', {'id': child.id}) }}" method="post">#}
-{#            <button type="submit" class="btn btn-success">Ajouter au panier</button>#}
-{#        </form>#}
-    </div>
+	<div class="card-footer d-flex justify-content-between">
+		<a href="{{ path('app_travel_page', {'slug': child.slug}) }}" class="btn btn-primary">Voir le voyage</a>
+		{#        <form action="{{ path('app_cart_add', {'id': child.id}) }}" method="post"> #}
+		{#            <button type="submit" class="btn btn-success">Ajouter au panier</button> #}
+		{#        </form> #}
+	</div>
 </div>

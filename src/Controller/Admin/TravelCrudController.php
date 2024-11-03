@@ -169,7 +169,8 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                 ->hideOnForm()
                 ->hideOnIndex(),
 	        DateField::new('periodStart'),
-	        DateField::new('periodEnd')
+	        DateField::new('periodEnd'),
+	        TextField::new('path', 'photo')
         ];
     }
 }

@@ -90,7 +90,7 @@ class DestinationCrudController extends AbstractCrudController implements EventS
                         ]),
                     ],
                 ]),
-
+			TextField::new('path', 'image'),
         ];
     }
 }

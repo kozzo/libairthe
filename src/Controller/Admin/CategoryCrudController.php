@@ -80,6 +80,7 @@ class CategoryCrudController extends AbstractCrudController implements EventSubs
                         ]),
                     ],
                 ]),
+	        TextField::new('path', 'photo')
         ];
     }
 }

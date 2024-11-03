@@ -92,6 +92,9 @@ class Travel
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $periodEnd = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $path = null;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -418,6 +421,18 @@ class Travel
     public function setPeriodEnd(?\DateTimeInterface $periodEnd): static
     {
         $this->periodEnd = $periodEnd;
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(?string $path): static
+    {
+        $this->path = $path;
 
         return $this;
     }
