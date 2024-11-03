@@ -71,8 +71,14 @@ final class ReservationController extends AbstractController
 	}
 
 	#[Route('/show/{slug}', name: 'app_reservation_summary', methods: ['GET'])]
-	public function show(Reservation $reservation): Response
+	public function show(string $slug): Response
 	{
+		$reservation = $this->entityManager->getRepository(Reservation::class)->findOneBy(['slug' => $slug]);
+
+		if (!$reservation) {
+			throw $this->createNotFoundException('Réservation non trouvée.');
+		}
+
 		return $this->render('reservation/show.html.twig', [
 			'reservation' => $reservation,
 		]);
