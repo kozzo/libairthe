@@ -2,42 +2,35 @@
 
 namespace App\Controller;
 
+use App\Entity\Newsletter;
+use App\Entity\User;
+use App\Service\NewsletterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\NewsletterSubscriber;
 
 class NewsletterController extends AbstractController
 {
+	private NewsletterService $newsletterService;
+
+	public function __construct(NewsletterService $newsletterService)
+	{
+		$this->newsletterService = $newsletterService;
+	}
+
 	#[Route('/newsletter/subscribe', name: 'newsletter_subscribe', methods: ['POST'])]
-	public function subscribe(Request $request, EntityManagerInterface $entityManager): Response
+	public function subscribe(Request $request): Response
 	{
 		$email = $request->request->get('email');
 
 		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			// L'adresse e-mail est invalide
 			$this->addFlash('error', 'Adresse e-mail invalide');
-			return $this->redirectToRoute('homepage'); // Redirigez vers la page souhaitée
 		}
 
-		// Vérifiez si l'e-mail est déjà inscrit
-		$existingSubscriber = $entityManager->getRepository(NewsletterSubscriber::class)->findOneBy(['email' => $email]);
-		if ($existingSubscriber) {
-			$this->addFlash('info', 'Vous êtes déjà inscrit à la newsletter');
-			return $this->redirectToRoute('homepage');
-		}
+		$this->newsletterService->subscribeUserByEmail($email);
 
-		// Ajouter l'adresse e-mail à la base de données
-		$subscriber = new NewsletterSubscriber();
-		$subscriber->setEmail($email);
-		$subscriber->setSubscribedAt(new \DateTime());
-
-		$entityManager->persist($subscriber);
-		$entityManager->flush();
-
-		$this->addFlash('success', 'Inscription réussie à la newsletter');
-		return $this->redirectToRoute('homepage');
+		return $this->redirectToRoute('app_home');
 	}
 }
