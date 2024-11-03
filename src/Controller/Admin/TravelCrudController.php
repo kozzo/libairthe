@@ -101,18 +101,9 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
             NumberField::new('availableSeats'),
             NumberField::new('dailySeats')
                 ->hideOnIndex(),
-            IntegerField::new('note')
-	            ->hideOnForm(),
+            IntegerField::new('note'),
             TextField::new('description')
-                ->hideOnIndex()
-                ->setFormTypeOptions([
-                    'constraints' => [
-                        new Regex([
-                            'pattern' => '/^[A-Za-zÀ-ÖØ-öø-ÿ0-9%()!?:\' ]{2,}+$/',
-                            'message' => 'Needs at least 2 characters.'
-                        ]),
-                    ],
-                ]),
+                ->hideOnIndex(),
             TextField::new('departurePlace')
                 ->setLabel('Departure')
                 ->setFormTypeOptions([
