@@ -20,7 +20,18 @@
 		/**
 		 * @throws \Exception
 		 */
-		public function createReservation(Request $request, Travel $travel, Address $address, User $client): Reservation
+		public function checkAvailability(int $requestedSeats, int $availableSeats, int $dailySeats): bool
+		{
+			if ($requestedSeats > $availableSeats || $requestedSeats > $dailySeats) {
+				return false;
+			}
+			return true;
+		}
+
+		/**
+		 * @throws \Exception
+		 */
+		public function createReservation(Request $request, Travel $travel, Address $address, User $client, int $requestedSeats, int $availableSeats, int $dailySeats): Reservation
 		{
 			$request = $request->get('reservation');
 			$adultTraveler = $request['adultTraveler'];
@@ -43,7 +54,11 @@
 			$reservation->setClient($client);
 			$reservation->setDepartureDate(new \DateTime($departureDate));
 
+			$travel->setAvailableSeats($travel->getAvailableSeats() - $requestedSeats);
+			$travel->setDailySeats($travel->getDailySeats() - $requestedSeats);
+
 			$this->entityManager->persist($reservation);
+			$this->entityManager->persist($travel);
 			$this->entityManager->flush();
 
 			return $reservation;

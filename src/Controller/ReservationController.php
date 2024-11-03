@@ -36,6 +36,9 @@ final class ReservationController extends AbstractController
         ]);
     }
 
+	/**
+	 * @throws \Exception
+	 */
 	#[Route('/new/{slug}', name: 'app_reservation_new', methods: ['GET', 'POST'])]
 	public function new(Request $request, string $slug): Response
 	{
@@ -53,15 +56,33 @@ final class ReservationController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 			$address = $form->get('address')->getData();
 
-			try {
-				$reservation = $this->reservationService->createReservation($request, $travel, $address, $client);
-				if (!$reservation->getSlug()) {
-					throw $this->createNotFoundException('Reservation slug not found.');
+			$filteredRequest = $request->get('reservation');
+
+			$adultTraveler = $filteredRequest['adultTraveler'];
+			$childTraveler = $filteredRequest['childTraveler'];
+
+			$requestedSeats = $adultTraveler + $childTraveler;
+
+			$availableSeats = $travel->getAvailableSeats();
+			$dailySeats = $travel->getDailySeats();
+
+			$canCreateReservation = $this->reservationService->checkAvailability($requestedSeats, $availableSeats, $dailySeats);
+
+			if ($canCreateReservation) {
+				try {
+					$reservation = $this->reservationService->createReservation($request, $travel, $address, $client, $requestedSeats, $availableSeats, $dailySeats);
+					if (!$reservation->getSlug()) {
+						throw $this->createNotFoundException('Reservation slug not found.');
+					}
+					return $this->redirectToRoute('app_reservation_summary', ['slug' => $reservation->getSlug()], Response::HTTP_SEE_OTHER);
+				} catch (\Exception $e) {
+					$this->addFlash('error', 'Une erreur s\'est produite lors de la réservation : ' . $e->getMessage());
 				}
-				return $this->redirectToRoute('app_reservation_summary', ['slug' => $reservation->getSlug()], Response::HTTP_SEE_OTHER);
-			} catch (\Exception $e) {
-				$this->addFlash('error', 'Une erreur s\'est produite lors de la réservation : ' . $e->getMessage());
+			} else {
+				$this->addFlash('error', 'Pas assez de place pour cette journée');
+				return $this->redirectToRoute('app_reservation_new', ['slug' => $travel->getSlug()], Response::HTTP_SEE_OTHER);
 			}
+
 		}
 
 		return $this->render('reservation/new.html.twig', [
