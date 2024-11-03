@@ -74,7 +74,7 @@ final class ReservationController extends AbstractController
 					if (!$reservation->getSlug()) {
 						throw $this->createNotFoundException('Reservation slug not found.');
 					}
-					return $this->redirectToRoute('app_reservation_summary', ['slug' => $reservation->getSlug()], Response::HTTP_SEE_OTHER);
+					return $this->redirectToRoute('app_payment_new', ['slug' => $reservation->getSlug()], Response::HTTP_SEE_OTHER);
 				} catch (\Exception $e) {
 					$this->addFlash('error', 'Une erreur s\'est produite lors de la réservation : ' . $e->getMessage());
 				}
