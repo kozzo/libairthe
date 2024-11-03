@@ -49,17 +49,13 @@ class DashboardController extends AbstractDashboardController
 
     public function configureDashboard(): Dashboard
     {
-//        $parametersRepository = $this->entityManager->getRepository(Parameters::class);
-//        $logoSetting = $parametersRepository->findOneBy(['settingName' => 'Logo']);
-//
-//        $logoFileName = $logoSetting ? $logoSetting->getFileName() : 'logo.png';
-//        $logoPath = 'build/images/logos/' . $logoFileName;
+        $logoUrl = $this->assets->getUrl('images/LOGO_LIBAIRTHE_BLANC.png');
 
         return Dashboard::new()
-            ->setTitle('<img src="
-            " class="img-fluid d-block mx-auto rounded-circle" style="max-width:100px; width:100%;">');
-//            ->setFaviconPath($this->assets->getUrl($logoPath));
+            ->setTitle('<img src="' . $logoUrl . '" class="img-fluid d-block mx-auto" style="max-width:100px; width:100%; border-radius: 8px;">');
     }
+
+
 
     public function configureMenuItems(): iterable
     {
