@@ -20,7 +20,7 @@
 		{% block body %}
 
 			<div class="container m-0 design-blue width-100">
-				<header class="m-0 py-3 border-bottom width-100">
+				<header class="m-0 py-3 width-100">
 					<nav class="navbar navbar-expand-md navbar-light">
 						<div class="container-fluid">
 							<a href="/" class="navbar-brand d-inline-block" style="width: auto;">
@@ -89,11 +89,14 @@
 					</nav>
 				</header>
 			</div>
-			<div>
-				C'est dans base :
-				<a href="{{ path('app_category') }}">Catégories</a> -
-				<a href="{{ path('app_travel') }}">Voyages</a> - 
-				<a href="{{ path('app_destination') }}">Destinations</a>
+			<div class="container-fluid design-blue-green py-2 mb-3">
+				<div id="navLinks" class="d-flex justify-content-start">
+					<a href="{{ path('app_category') }}" class="nav-link px-3 text-white fs-5">Catégories</a>
+					<span class="text-white">|</span>
+					<a href="{{ path('app_travel') }}" class="nav-link px-3 text-white fs-5">Voyages</a>
+					<span class="text-white">|</span>
+					<a href="{{ path('app_destination') }}" class="nav-link px-3 text-white fs-5">Destinations</a>
+				</div>
 			</div>
 
 			<div class="container m-0 p-0 width-100 d-flex flex-column align-items-center justify-content-center">
