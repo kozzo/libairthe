@@ -6,7 +6,7 @@
 			<img class="img-fluid rounded" src="{{ asset('images/travels/' ~ child.path) }}" alt="image de {{ child.label }}" style="max-height: 200px; object-fit: cover; width: 100%;">
 		</div>
 		<p class="card-text">
-			{{ child.destination }} <br>à partir de {{ child.childUnitPrice }} €
+			{{ child.destination }} <br>à partir de {{ (child.childUnitPrice /100) }} €
 		</p>
 		<div class="d-flex justify-content-between">
 			<a href="{{ path('app_reservation_new', { 'slug': child.slug}) }}" class="btn btn-primary btn-block">Réserver</a>
