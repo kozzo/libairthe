@@ -74,10 +74,35 @@ class Travel
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'travel')]
     private Collection $reservations;
 
+    /**
+     * @var Collection<int, Category>
+     */
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'travels')]
+    private Collection $categories;
+
+    /**
+     * @var Collection<int, Tag>
+     */
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'travels')]
+    private Collection $tags;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $periodStart = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $periodEnd = null;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return (string) $this->label;
     }
 
     public function getId(): ?int
@@ -321,6 +346,78 @@ class Travel
                 $reservation->setTravel(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): static
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): static
+    {
+        $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getPeriodStart(): ?\DateTimeInterface
+    {
+        return $this->periodStart;
+    }
+
+    public function setPeriodStart(?\DateTimeInterface $periodStart): static
+    {
+        $this->periodStart = $periodStart;
+
+        return $this;
+    }
+
+    public function getPeriodEnd(): ?\DateTimeInterface
+    {
+        return $this->periodEnd;
+    }
+
+    public function setPeriodEnd(?\DateTimeInterface $periodEnd): static
+    {
+        $this->periodEnd = $periodEnd;
 
         return $this;
     }

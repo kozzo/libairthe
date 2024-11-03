@@ -3,7 +3,7 @@
 
 {% block content %}
 	{% set user = app.user %}
-	<div class="width-100 container d-flex justify-content-center align-items-center">
+	<div class="width-100 container d-flex flex-column justify-content-center align-items-center">
 		<div class="card text-center shadow-lg m-4 mt-5 col-5">
 			<div class="card-header fw-bold fs-5">
 				Vos informations personnelles
@@ -15,17 +15,56 @@
 						<li class="list-group-item"> Nom : {{ user.lastName }} </li>
 						<li class="list-group-item"> Email : {{ user.email }} </li>
 						<li class="list-group-item"> Compte créé le {{ user.createdAt|date("d/m/Y") }} </li>
-						<li class="list-group-item"> Vos point d'expérience : {{ user.experiencePoints }} </li>
-						Votre adresse :
-						<li class="list-group-item fw-bold text-danger">
-							TODO : intégrer address.tostring
-						</li>
+						<li class="list-group-item"> Vos points d'expérience : {{ user.experiencePoints }} </li>
+
+							{% if user.addresses.count <= 1 %}
+								Votre adresse :
+							{% else %}
+								Vos adresses :
+							{% endif %}
+
+							{% if user.addresses is not empty %}
+								{% for address in user.addresses %}
+										<div class="d-flex justify-content-center align-items-center p-2">
+											{{ address }}
+											<form method="post" action="{{ path('app_user_address_delete', {'slug': address.slug}) }}"
+											      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette adresse ?');">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ address.slug) }}">
+												<button class="btn btn-sm btn-danger">Supprimer l'adresse</button>
+											</form>
+										</div>
+								{% endfor %}
+
+							{% else %}
+								Vous n'avez aucune adresse par défaut.
+							{% endif %}
 					</ul>
 				</div>
-				<a href="#" class="btn btn-primary fw-bold text-danger">Modifier vos informations (TODO)</a>
+				<div class="card-footer text-body-secondary">
+					<a href="{{ path('app_user_add_address') }}" class="btn btn-primary fw-bold">Ajouter une adresse</a>
+				</div>
 			</div>
-			<div class="card-footer text-body-secondary">
+			<a href="{{ path('app_user_crud_edit', {'slug': user.slug}) }}" class="btn btn-primary fw-bold">Modifier vos informations</a>
+		</div>
+		<div class="card text-center shadow-lg m-4 mt-5 col-5">
+			<div class="card-header fw-bold fs-5">
+				Vos réservations
+			</div>
+			<div class="card-body">
+				{% if user.reservations is not empty %}
+					{% for reservation in user.reservations %}
+						<div class="d-flex justify-content-around align-items-center p-2">
+							<p>Date : {{ reservation.departureDate |date("d/m/Y")  }}</p>
+							<p>Départ : {{ reservation.travel.departurePlace }}</p>
+							<p>Arrivée : {{ reservation.travel.arrivingPlace }}</p>
+							<a class="btn btn-success" href="{{ path('app_reservation_summary', {'slug': reservation.slug}) }}">Voir la réservation</a>
+							<hr>
+						</div>
+					{% endfor %}
 
+				{% else %}
+					Vous n'avez fait aucune réservation.
+				{% endif %}
 			</div>
 		</div>
 	</div>

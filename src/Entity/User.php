@@ -70,23 +70,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, address>
      */
-    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'client')]
-    private Collection $address;
+    #[ORM\OneToMany(targetEntity: Address::class, mappedBy: 'client', cascade: ["remove"])]
+    private Collection $addresses;
 
     /**
      * @var Collection<int, reservation>
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'client')]
-    private Collection $reservation;
+    private Collection $reservations;
 
     #[ORM\Column]
     private bool $isVerified = false;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $isSubscribedToNewsletter = null;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
-        $this->address = new ArrayCollection();
-        $this->reservation = new ArrayCollection();
+        $this->addresses = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
     }
 
     public function getId(): ?int
@@ -239,17 +247,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isAdmin(): ?bool
     {
-         return in_array($this->getRoles(),['ROLE_ADMIN']);
+         return in_array('ROLE_ADMIN', $this->getRoles());
     }
 
-    public function setAdmin(bool $is_admin): static
+    public function setIsAdmin(bool $is_admin): static
     {
-        if($is_admin){
-            $this->setRoles(["ROLE_ADMIN", "ROLE_USER"]);
+        $roles = $this->getRoles();
+        if(!in_array("ROLE_ADMIN", $roles)){
+            array_push($roles, "ROLE_ADMIN");
         }else{
-            $this->setRoles(["ROLE_USER"]);
+            array_splice($roles, array_search("ROLE_ADMIN", $roles), 1);
         }
+
+        $this->setRoles($roles);
         return $this;
+
     }
 
     public function getExperiencePoints(): ?int
@@ -265,14 +277,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, review>
+     * @return Collection<int, \App\Entity\Review>
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(review $review): static
+    public function addReview(Review $review): static
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews->add($review);
@@ -282,7 +294,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeReview(review $review): static
+    public function removeReview(Review $review): static
     {
         if ($this->reviews->removeElement($review)) {
             // set the owning side to null (unless already changed)
@@ -295,26 +307,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, address>
+     * @return Collection<int, \App\Entity\Address>
      */
-    public function getAddress(): Collection
+    public function getAddresses(): Collection
     {
-        return $this->address;
+        return $this->addresses;
     }
 
-    public function addAddress(address $address): static
+    public function addAddress(Address $address): static
     {
-        if (!$this->address->contains($address)) {
-            $this->address->add($address);
+        if (!$this->addresses->contains($address)) {
+            $this->addresses->add($address);
             $address->setClient($this);
         }
 
         return $this;
     }
 
-    public function removeAddress(address $address): static
+    public function removeAddress(Address $address): static
     {
-        if ($this->address->removeElement($address)) {
+        if ($this->addresses->removeElement($address)) {
             // set the owning side to null (unless already changed)
             if ($address->getClient() === $this) {
                 $address->setClient(null);
@@ -324,27 +336,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, reservation>
-     */
-    public function getReservation(): Collection
-    {
-        return $this->reservation;
-    }
+	/**
+	 * @return Collection<int, \App\Entity\Reservation>
+	 */
+	public function getReservations(): Collection
+	{
+		return $this->reservations;
+	}
 
-    public function addReservation(reservation $reservation): static
+    public function addReservation(Reservation $reservation): static
     {
-        if (!$this->reservation->contains($reservation)) {
-            $this->reservation->add($reservation);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
             $reservation->setClient($this);
         }
 
         return $this;
     }
 
-    public function removeReservation(reservation $reservation): static
+    public function removeReservation(Reservation $reservation): static
     {
-        if ($this->reservation->removeElement($reservation)) {
+        if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
             if ($reservation->getClient() === $this) {
                 $reservation->setClient(null);
@@ -362,6 +374,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function isSubscribedToNewsletter(): ?bool
+    {
+        return $this->isSubscribedToNewsletter;
+    }
+
+    public function setSubscribedToNewsletter(?bool $isSubscribedToNewsletter): static
+    {
+        $this->isSubscribedToNewsletter = $isSubscribedToNewsletter;
 
         return $this;
     }

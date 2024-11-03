@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voyage vers cette destination{% endblock %}
+
+{% block content %}
+    <div class="m-3">
+        <h1 class="pt-5">Voyages vers {{ destination.label }}</h1>
+        <div class="m-5">
+            <div class="row row-cols-sm-1 row-cols-lg-2">
+                {% for child in destinationTravels %}
+                    <div class="col mb-2">
+                        {{ include('travel/_partials/travel-card.html.twig') }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

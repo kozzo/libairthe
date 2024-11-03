@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TagRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TagRepository::class)]
@@ -24,6 +26,22 @@ class Tag
 
     #[ORM\Column(length: 255)]
     private ?string $content = null;
+
+    /**
+     * @var Collection<int, Travel>
+     */
+    #[ORM\ManyToMany(targetEntity: Travel::class, mappedBy: 'tags')]
+    private Collection $travels;
+
+    public function __construct()
+    {
+        $this->travels = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->label;
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +92,33 @@ class Tag
     public function setContent(string $content): static
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Travel>
+     */
+    public function getTravels(): Collection
+    {
+        return $this->travels;
+    }
+
+    public function addTravel(Travel $travel): static
+    {
+        if (!$this->travels->contains($travel)) {
+            $this->travels->add($travel);
+            $travel->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTravel(Travel $travel): static
+    {
+        if ($this->travels->removeElement($travel)) {
+            $travel->removeTag($this);
+        }
 
         return $this;
     }

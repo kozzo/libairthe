@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %} Travel - {{ travel.label }} {% endblock %}
+{% block content %}
+    <div class="container my-4">
+        <div class="px-5">
+            <span>{{ travel.adultUnitPrice |format_currency('EUR', locale='fr') }}</span><br>
+            <span>Départ : {{ travel.departurePlace }}</span><br>
+            <span>Arrivée : {{ travel.destination }}</span><br>
+            <span>Places disponibles : {{ travel.availableSeats }}</span>
+        </div>
+        <div class="my-3">
+            {{ travel.description }}
+        </div>
+        <div>
+            {# Add to cart button #}
+            <button class="btn btn-outline-primary">Ajouter au panier</button>
+        </div>
+    </div>
+{% endblock %}
+

@@ -119,12 +119,12 @@ class Review
         return $this;
     }
 
-    public function getTravel(): ?travel
+    public function getTravel(): ?Travel
     {
         return $this->travel;
     }
 
-    public function setTravel(?travel $travel): static
+    public function setTravel(?Travel $travel): static
     {
         $this->travel = $travel;
 

@@ -43,7 +43,7 @@ class CategoryCrudController extends AbstractCrudController implements EventSubs
         }
 
         $slug = $this->slugger->slug($entity->getLabel());
-        $entity->setSlug($slug);
+        $entity->setSlug(strtolower($slug));
     }
 
     public function createEntity($entityFqcn): Category
@@ -58,7 +58,7 @@ class CategoryCrudController extends AbstractCrudController implements EventSubs
     {
         if ($entityInstance instanceof Category) {
             $slug = $this->slugger->slug($entityInstance->getLabel());
-            $entityInstance->setSlug($slug);
+            $entityInstance->setSlug(strtolower($slug));
         }
         parent::updateEntity($entityManager, $entityInstance);
     }
@@ -76,7 +76,7 @@ class CategoryCrudController extends AbstractCrudController implements EventSubs
                     'constraints' => [
                         new Regex([
                             'pattern' => '/^[A-Za-zÀ-ÖØ-öø-ÿ\' ]{2,}+$/',
-                            'message' => 'Characters Only.'
+                            'message' => 'Characters only.'
                         ]),
                     ],
                 ]),

@@ -1,0 +1,30 @@
+{% block body %}
+
+	<div class="d-flex">
+		<form class="w-100 d-flex flex-wrap align-items-center" role="search" method="get" action="{{ path('travel_search') }}">
+
+			<select name="category" class="form-control mb-2" aria-label="Category">
+				<option value="">Catégorie</option>
+				{% for category in get_all_categories() %}
+					<option value="{{ category.id }}">{{ category.label }}</option>
+				{% endfor %}
+			</select>
+
+			<input type="text" name="keyword" class="form-control me-2 mb-2" placeholder="Mot-clé..." aria-label="Keyword" style="width: auto;">
+
+			<input type="date" name="date" class="form-control me-2 mb-2" placeholder="Date de voyage" aria-label="Date" style="width: auto;">
+
+			<input type="number" name="minRating" class="form-control me-2 mb-2" placeholder="Note minimale" aria-label="Minimum Rating" min="0" max="5" style="width: auto;">
+
+			<input type="number" name="maxBudget" class="form-control me-2 mb-2" placeholder="Budget maximum" aria-label="Max Budget" min="0" style="width: auto;">
+
+			<input type="number" name="adults" class="form-control me-2 mb-2" placeholder="Nombre d'adultes" aria-label="Adults" min="0" style="width: auto;">
+
+			<input type="number" name="children" class="form-control me-2 mb-2" placeholder="Nombre d'enfants" aria-label="Children" min="0" style="width: auto;">
+
+			<button type="submit" class="btn btn-primary mb-2" style="width: auto;">Rechercher</button>
+		</form>
+	</div>
+
+
+{% endblock %}
