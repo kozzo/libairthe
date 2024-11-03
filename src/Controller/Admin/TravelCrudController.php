@@ -93,9 +93,9 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                         ]),
                     ],
                 ]),
-            MoneyField::new('adultUnitPrice')
+            MoneyField::new('adultUnitPrice', "Adult")
                 ->setCurrency('EUR'),
-            MoneyField::new('childUnitPrice')
+            MoneyField::new('childUnitPrice', "Child")
                 ->setCurrency('EUR'),
             NumberField::new('totalSeats'),
             NumberField::new('availableSeats'),
