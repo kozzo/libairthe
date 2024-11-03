@@ -57,6 +57,8 @@
 			$travel->setAvailableSeats($travel->getAvailableSeats() - $requestedSeats);
 			$travel->setDailySeats($travel->getDailySeats() - $requestedSeats);
 
+			$client->setExperiencePoints($client->getExperiencePoints() + ($totalPrice/10));
+
 			$this->entityManager->persist($reservation);
 			$this->entityManager->persist($travel);
 			$this->entityManager->flush();
