@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Address;
 use App\Entity\User;
+use App\Enum\ExperienceLevel;
 use App\Form\AddressType;
 use App\Form\UserFormType;
 use App\Form\UserType;
@@ -20,8 +21,12 @@ class UserController extends AbstractController
     #[Route('/profile', name: 'app_user_profile')]
     public function index(): Response
     {
+        $userExperiencePoints = $this->getUser()->getExperiencePoints();
+        $userLevel = ExperienceLevel::getLevelByPoints($userExperiencePoints);
+
         return $this->render('user/profile.html.twig', [
 	        'user' => $this->getUser(),
+            'userLevel' => $userLevel,
         ]);
     }
 
