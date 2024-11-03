@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
@@ -53,6 +54,9 @@ class Reservation
 
     #[ORM\ManyToOne(inversedBy: 'reservation')]
     private ?User $client = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $departureDate = null;
 
     public function getId(): ?int
     {
@@ -211,6 +215,18 @@ class Reservation
     public function setClient(?User $client): static
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getDepartureDate(): ?\DateTimeInterface
+    {
+        return $this->departureDate;
+    }
+
+    public function setDepartureDate(\DateTimeInterface $departureDate): static
+    {
+        $this->departureDate = $departureDate;
 
         return $this;
     }

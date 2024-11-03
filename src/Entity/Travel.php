@@ -86,6 +86,12 @@ class Travel
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'travels')]
     private Collection $tags;
 
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $periodStart = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $periodEnd = null;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -388,6 +394,30 @@ class Travel
     public function removeTag(Tag $tag): static
     {
         $this->tags->removeElement($tag);
+
+        return $this;
+    }
+
+    public function getPeriodStart(): ?\DateTimeInterface
+    {
+        return $this->periodStart;
+    }
+
+    public function setPeriodStart(?\DateTimeInterface $periodStart): static
+    {
+        $this->periodStart = $periodStart;
+
+        return $this;
+    }
+
+    public function getPeriodEnd(): ?\DateTimeInterface
+    {
+        return $this->periodEnd;
+    }
+
+    public function setPeriodEnd(?\DateTimeInterface $periodEnd): static
+    {
+        $this->periodEnd = $periodEnd;
 
         return $this;
     }

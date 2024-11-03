@@ -82,6 +82,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $isSubscribedToNewsletter = null;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -333,13 +336,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, \App\Entity\Reservation>
-     */
-    public function getReservation(): Collection
-    {
-        return $this->reservations;
-    }
+	/**
+	 * @return Collection<int, \App\Entity\Reservation>
+	 */
+	public function getReservations(): Collection
+	{
+		return $this->reservations;
+	}
 
     public function addReservation(Reservation $reservation): static
     {
@@ -371,6 +374,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function isSubscribedToNewsletter(): ?bool
+    {
+        return $this->isSubscribedToNewsletter;
+    }
+
+    public function setSubscribedToNewsletter(?bool $isSubscribedToNewsletter): static
+    {
+        $this->isSubscribedToNewsletter = $isSubscribedToNewsletter;
 
         return $this;
     }

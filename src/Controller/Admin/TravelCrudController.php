@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -92,22 +93,15 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                         ]),
                     ],
                 ]),
-            MoneyField::new('adultUnitPrice')
+            MoneyField::new('adultUnitPrice', "Adult")
                 ->setCurrency('EUR'),
-            MoneyField::new('childUnitPrice')
+            MoneyField::new('childUnitPrice', "Child")
                 ->setCurrency('EUR'),
             NumberField::new('totalSeats'),
             NumberField::new('availableSeats'),
             NumberField::new('dailySeats'),
-            TextField::new('note')
-                ->setFormTypeOptions([
-                    'constraints' => [
-                        new Regex([
-                            'pattern' => '/^[A-Za-zÀ-ÖØ-öø-ÿ0-9%()!?:\' ]{2,}+$/',
-                            'message' => 'Needs at least 2 characters.'
-                        ]),
-                    ],
-                ]),
+            IntegerField::new('note')
+	            ->hideOnForm(),
             TextField::new('description')
                 ->setFormTypeOptions([
                     'constraints' => [
@@ -161,18 +155,15 @@ class TravelCrudController extends AbstractCrudController implements EventSubscr
                 ->setFormTypeOptions([
                     'constraints' => [
                         new Count([
-                            'min' => 1,
-                            'minMessage' => 'Please select at least one tag.',
+                            'min' => 0,
                         ]),
                     ],
                 ]),
 
             DateField::new('createdAt')
                 ->hideOnForm(),
-            DateField::new('updatedAt')
-                ->hideOnForm(),
-            DateField::new('deletedAt')
-                ->hideOnForm(),
+	        DateField::new('periodStart'),
+	        DateField::new('periodEnd')
         ];
     }
 }
