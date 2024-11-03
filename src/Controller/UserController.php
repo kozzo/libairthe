@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class UserController extends AbstractController
 {
@@ -34,22 +35,20 @@ class UserController extends AbstractController
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
+            $slugStreet = str_replace(' ', '-', $address->getStreet());
+            $slugCity = $address->getCity();
+            $slugCountry = $address->getCountry();
 
-            /////
-            ///
-            ///         $slugStreet = $this->slugger->slug($entity->getStreet());
-            //        $slugCity = $this->slugger->slug($entity->getCity());
-            //        $slugCountry = $this->slugger->slug($entity->getCountry());
-            //
-            //        $slug = $this->slugger->slug(
-            //            $entity->getZipCode().'-'.
-            //                $slugStreet.'-'.
-            //                $slugCity.'-'.
-            //                $slugCountry
-            //        );
-            //        $entity->setSlug(strtolower($slug));
-            /// /////
-			$address->setSlug($address->getZipCode().'-'.$address->getStreet().'-'.$address->getCity());
+            $slug =
+                $address->getZipCode().'-'.
+                $slugStreet.'-'.
+                $slugCity.'-'.
+                $slugCountry.'-'.
+                uniqid();
+            $address->setSlug(strtolower($slug));
+
+
+//			$address->setSlug($address->getZipCode().'-'.$address->getStreet().'-'.$address->getCity());
 
 			$address->setCreatedAt(new \DateTimeImmutable());
 			$address->setUpdatedAt(new \DateTimeImmutable());

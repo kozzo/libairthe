@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\TravelRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,16 +25,22 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_category_travels')]
-    public function showCategoryProducts(CategoryRepository $categoryRepository, $id): Response
+    #[Route('/{slug}', name: 'app_category_travels')]
+    public function showCategoryProducts(CategoryRepository $categoryRepository, $slug): Response
     {
-        $categoryTravels = $categoryRepository->find($id)->getTravels();
-        $category = $categoryRepository->find($id);
+        $category = $categoryRepository->findOneBy(['slug' => $slug]);
+
+        if (!$category) {
+            throw $this->createNotFoundException('Category not found');
+        }
+
+        $categoryTravels = $category->getTravels();
 
         return $this->render('category/travels.html.twig', [
             'categoryTravels' => $categoryTravels,
             'category' => $category,
         ]);
     }
+
 
 }
