@@ -336,13 +336,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, \App\Entity\Reservation>
-     */
-    public function getReservation(): Collection
-    {
-        return $this->reservations;
-    }
+	/**
+	 * @return Collection<int, \App\Entity\Reservation>
+	 */
+	public function getReservations(): Collection
+	{
+		return $this->reservations;
+	}
 
     public function addReservation(Reservation $reservation): static
     {

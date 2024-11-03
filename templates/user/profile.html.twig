@@ -16,7 +16,7 @@
 						<li class="list-group-item"> Email : {{ user.email }} </li>
 						<li class="list-group-item"> Compte créé le {{ user.createdAt|date("d/m/Y") }} </li>
 						<li class="list-group-item"> Vos points d'expérience : {{ user.experiencePoints }} </li>
-						<div class="card-body">
+
 							{% if user.addresses.count <= 1 %}
 								Votre adresse :
 							{% else %}
@@ -38,7 +38,6 @@
 							{% else %}
 								Vous n'avez aucune adresse par défaut.
 							{% endif %}
-						</div>
 					</ul>
 				</div>
 				<div class="card-footer text-body-secondary">
@@ -46,6 +45,26 @@
 				</div>
 			</div>
 			<a href="{{ path('app_user_crud_edit', {'slug': user.slug}) }}" class="btn btn-primary fw-bold">Modifier vos informations</a>
+		</div>
+		<div class="card text-center shadow-lg m-4 mt-5 col-5">
+			<div class="card-header fw-bold fs-5">
+				Vos réservations
+			</div>
+			<div class="card-body">
+				{% if user.reservations is not empty %}
+					{% for reservation in user.reservations %}
+						<div class="d-flex justify-content-center align-items-center p-2">
+							{{ reservation.reference }}
+							{{ reservation.travel.departurePlace }}
+							{{ reservation.travel.arrivingPlace }}
+							<a class="btn btn-success" href="{{ path('app_reservation_summary', {'slug': reservation.slug}) }}">Voir la réservation</a>
+						</div>
+					{% endfor %}
+
+				{% else %}
+					Vous n'avez fait aucune réservation.
+				{% endif %}
+			</div>
 		</div>
 	</div>
 {% endblock %}

@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use AllowDynamicProperties;
+use App\Entity\Address;
+use App\Entity\Reservation;
 use App\Entity\Travel;
+use App\Entity\User;
+use App\Form\ReservationType;
 use App\Form\TravelType;
 use App\Repository\TravelRepository;
 use App\Service\TravelSearchService;
@@ -17,6 +21,8 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/travel')]
 class TravelController extends AbstractController
 {
+
+	private $reservationService;
 
 	public function __construct(TravelSearchService $travelSearchService) {
 		$this->travelSearchService = $travelSearchService;

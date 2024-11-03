@@ -5,6 +5,7 @@
         <p class="card-text">
             {{ child.destination }} <br>à partir de {{ child.childUnitPrice }} €
         </p>
+        <a href="{{ path('app_reservation_new', { 'slug': child.slug}) }}" class="btn btn-primary">Réserver</a>
     </div>
 
     <div class="card-footer d-flex justify-content-between">
