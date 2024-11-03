@@ -37,6 +37,8 @@
 			$this->addFlash('success', 'Votre paiement a été effectué avec succès.');
 			$reservation = $this->entityManager->getRepository(Reservation::class)->findOneBy(['slug' => $slug]);
 			$reservation->setStatus('Validé et payé');
+			$this->entityManager->persist($reservation);
+			$this->entityManager->flush();
 
 			return $this->redirectToRoute('app_reservation_summary', ['slug' => $slug]);
 		}
