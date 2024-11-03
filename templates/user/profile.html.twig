@@ -16,12 +16,12 @@
 						<li class="list-group-item"> Email : {{ user.email }} </li>
 						<li class="list-group-item"> Compte créé le {{ user.createdAt|date("d/m/Y") }} </li>
 						<li class="list-group-item">
-							Progression avant le prochain niveau:
+							<p>Progression avant le prochain niveau:</p>
 							<div class="progress" role="progressbar" aria-label="Animated striped" aria-valuenow="{{ user.experiencePoints }}" aria-valuemin="0" aria-valuemax="{{ userLevel.getNextLevelPoints() }}">
-								<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{ user.experiencePoints }}%">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{ user.experiencePoints }}% ">
 								</div>
 							</div>
-							Votre niveau de fidélité : {{ userLevel.name }}
+							<p><br>Votre niveau de fidélité : {{ userLevel.name }}</p>
 						</li>
 
 							{% if user.addresses.count <= 1 %}

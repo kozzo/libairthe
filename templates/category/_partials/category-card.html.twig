@@ -3,7 +3,11 @@
     <div class="card-body">
         <h5 class="card-title">{{ child.label }}</h5>
         <div class="mb-3">
-            <img class="img-fluid rounded" src="{{ asset('images/categories/' ~ child.path) }}" alt="image de {{ child.label }}" style="max-height: 200px; object-fit: cover; width: 100%;">
+            <img class="img-fluid rounded"
+                 src="{{ asset('images/categories/' ~ child.path) }}"
+                 alt="image de {{ child.label }}"
+                 aria-label="image de {{ child.label }}"
+                 style="max-height: 200px; object-fit: cover; width: 100%;">
         </div>
     </div>
 

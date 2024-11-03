@@ -8,7 +8,11 @@
 
 	<div class="container d-flex flex-column align-items-center justify-content-center mb-5">
 
-		<img class="img-fluid rounded" src="{{ asset('/images/travels/' ~ reservation.travel.path) }}" alt="image de {{ reservation.travel.label }}" style="max-height: 200px; object-fit: cover; width: 100%;">
+		<img class="img-fluid rounded"
+			 src="{{ asset('/images/travels/' ~ reservation.travel.path) }}"
+			 alt="image de {{ reservation.travel.label }}"
+			 aria-label="image de {{ reservation.travel.label }}"
+			 style="max-height: 200px; object-fit: cover; width: 100%;">
 
 		<table class="table">
 			<tbody>

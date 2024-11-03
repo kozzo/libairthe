@@ -56,8 +56,11 @@ class DashboardController extends AbstractDashboardController
 //        $logoPath = 'build/images/logos/' . $logoFileName;
 
         return Dashboard::new()
-            ->setTitle('<img src="
-            " class="img-fluid d-block mx-auto rounded-circle" style="max-width:100px; width:100%;">');
+            ->setTitle('<img   src="" 
+                                    class="img-fluid d-block mx-auto rounded-circle" 
+                                    alt="Titre"
+                                    aria-label="Titre"
+                                    style="max-width:100px; width:100%;">');
 //            ->setFaviconPath($this->assets->getUrl($logoPath));
     }
 
