@@ -187,7 +187,17 @@ class Travel
 
     public function getNote(): ?string
     {
-        return $this->note;
+	    $reviews = $this->getReviews();
+	    if ($reviews->isEmpty()) {
+		    return 5;
+	    }
+
+	    $total = 0;
+	    foreach ($reviews as $review) {
+		    $total += (int) $review->getNote();
+	    }
+
+	    return $total / count($reviews);
     }
 
     public function setNote(string $note): static
