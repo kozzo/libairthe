@@ -1,39 +1,46 @@
 {% extends 'base.html.twig' %}
-{% block title %}Travel - {{ travel.label }}{% endblock %}
+{% block title %}Voyage - {{ travel.label }}{% endblock %}
 {% block content %}
-    <div class="container my-4">
-        <h4 class="mb-4">{{ travel.label }}</h4>
+	<div class="container my-4">
+		<h4 class="mb-4">{{ travel.label }}</h4>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <img class="img-fluid rounded" src="{{ asset('images/travels/' ~ travel.path) }}" alt="image de {{ travel.label }}">
-            </div>
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<img class="img-fluid rounded" src="{{ asset('images/travels/' ~ travel.path) }}" alt="image de {{ travel.label }}">
+			</div>
 
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <strong>Prix adulte :</strong> {{ (travel.adultUnitPrice / 100) | format_currency('EUR', locale='fr') }}<br>
-                    <strong>Prix enfant :</strong> {{ (travel.childUnitPrice / 100) | format_currency('EUR', locale='fr') }}<br>
-                    <strong>Départ :</strong> {{ travel.departurePlace }}<br>
-                    <strong>Arrivée :</strong> {{ travel.destination }}<br>
-{#                    set date time à ajourd'hui#}
-{#                    si aujourdhui entre les périodes on affiche les dailyseats#}
-{#                    sinon montrer les dispo#}
-                    <div class="mb-3">
-                        {% set today = "now"|date("Y-m-d") %}
+			<div class="col-md-6">
+				<div class="mb-3">
+					<strong>Prix adulte
+					        :</strong> {{ (travel.adultUnitPrice / 100) | format_currency('EUR', locale='fr') }}
+					<br>
+					<strong>Prix enfant
+					        :</strong> {{ (travel.childUnitPrice / 100) | format_currency('EUR', locale='fr') }}
+					<br>
+					<strong>Départ :</strong> {{ travel.departurePlace }}<br>
+					<strong>Arrivée :</strong> {{ travel.destination }}<br>
+					{#                    set date time à ajourd'hui #}
+					{#                    si aujourdhui entre les périodes on affiche les dailyseats #}
+					{#                    sinon montrer les dispo #}
+					<div class="mb-3">
+						{% set today = "now"|date("Y-m-d") %}
 
-                        {% if today >= travel.periodStart|date("Y-m-d") and today <= travel.periodEnd|date("Y-m-d") %}
-                            <strong>Places disponibles aujourd'hui :</strong> {{ travel.dailySeats }}
-                            <br><br>
-                            <p>{{ travel.description }}</p>
+						{% if today >= travel.periodStart|date("Y-m-d") and today <= travel.periodEnd|date("Y-m-d") %}
+						<strong>Places disponibles aujourd'hui :</strong> {{ travel.dailySeats }}
+						<br><br>
+						<p>{{ travel.description }}</p>
 
-                            <a href="{{ path('app_reservation_new', { 'slug': travel.slug}) }}" class="btn btn-primary btn-block">Réserver</a>            </div>
+						<a href="{{ path('app_reservation_new', { 'slug': travel.slug}) }}" class="btn btn-primary btn-block">Réserver</a>
+					</div>
 
-                        {% else %}
-                            <strong>Période :</strong> du {{ travel.periodStart|date("d/m/Y") }} au {{ travel.periodEnd|date("d/m/Y") }}
-                            <br><br>
-                            <p>{{ travel.description }}</p>
-                {% endif %}
-                    </div>
-        </div>
-    </div>
+				{% else %}
+					<strong>Période
+					        :</strong> du {{ travel.periodStart|date("d/m/Y") }} au {{ travel.periodEnd|date("d/m/Y") }}
+					<br><br>
+					<p>{{ travel.description }}</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
