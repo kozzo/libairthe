@@ -15,7 +15,16 @@
 			Note : {{ child.note }}
 		</p>
 		<div class="d-flex justify-content-between">
+			{% set today = "now"|date("Y-m-d") %}
+			{% if today >= child.periodStart|date("Y-m-d") and today <= child.periodEnd|date("Y-m-d") %}
+			<strong>Places disponibles aujourd'hui :</strong> {{ child.dailySeats }}
+			<br><br>
 			<a href="{{ path('app_reservation_new', { 'slug': child.slug}) }}" class="btn btn-primary btn-block">Réserver</a>
+		{% else %}
+			<strong>Période
+			        :</strong> du {{ child.periodStart|date("d/m/Y") }} au {{ child.periodEnd|date("d/m/Y") }}
+			<br><br>
+		{% endif %}
 			<a href="{{ path('app_travel_page', {'slug': child.slug}) }}" class="btn btn-primary">Voir le voyage</a>
 		</div>
 	</div>
